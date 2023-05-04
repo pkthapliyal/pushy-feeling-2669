@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <style>
+        * {
+            font-family: 'Montserrat';
+        }
+
+        .spring {
+            /* width: 100%; */
+            margin-top: auto;
+            margin-top: -1%;
+            background-color: #87B3D4;
+            text-align: center;
+            font-family: 'Montserrat';
+            padding: .5%;
+
+        }
+
+        .spring span {
+            font-size: 24px;
+            margin-left: 5%;
+            margin-right: 5%;
+            font-weight: bold;
+        }
+
+        .login_nav {
+            width: 100%;
+            height: 45px;
+            margin: auto;
+            padding: auto;
+            background-color: #F3F3F3;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+
+        }
+
+        .login_nav div {
+            width: 35%;
+            padding-right: 1%;
+            color: #37474F;
+            display: flex;
+            justify-content: space-evenly;
+            font-size: 15px;
+            ;
+        }
+
+        .login_nav div a {
+            text-decoration: none;
+            color: #37474F;
+        }
+
+
+        /*  Main nav bar */
+        .main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .main img {
+            width: 10%;
+        }
+
+        .main div {
+            display: flex;
+            align-items: center;
+        }
+
+        .main a {
+            margin-left: 1%;
+            margin-right: 1%;
+            text-decoration: none;
+            color: #37474F;
+        }
+
+        .main a:hover {
+            margin-left: 1%;
+            margin-right: 1%;
+            font-weight: bold;
+            color: #263238;
+        }
+
+        .cart {
+
+            margin-right: 1%;
+            width: 20%;
+            height: 65px;
+            text-align: center;
+            margin: auto;
+        }
+
+        .cart div i {
+            margin: auto;
+        }
+
+        .cart div:nth-child(1) {
+            border: 1px solid #1976D2;
+            width: 50%;
+            height: 65px;
+            margin: auto;
+            padding: auto;
+        }
+
+        .cart div:nth-child(2) {
+            background-color: #1976D2;
+            width: 50%;
+            height: 65px;
+
+        }
+
+        .spring2 {
+
+            margin-top: auto;
+            background-color: #dcdcdc;
+            font-size: 16px;
+            text-align: center;
+            padding: 1%;
+
+        }
+
+        /*  Body  */
+        .sandle_image {
+            width: 100%;
+            margin: auto;
+            margin-top: 1%;
+            padding: auto;
+        }
+
+        /*  Spring in the air  */
+        .statement {
+            width: 100%;
+            margin: auto;
+            /* padding-top: 3%;
+            padding-bottom: 3%; */
+            text-align: center;
+
+        }
+
+        .statement div {
+            width: 60%;
+            box-sizing: border-box;
+            display: flex;
+            margin: auto;
+
+        }
+
+        .statement div div {
+            box-sizing: border-box;
+            border-radius: 2px;
+            margin: auto;
+            margin-left: 5%;
+            text-align: center;
+            background-color: #B2FF59;
+            padding-left: 10%;
+        }
+
+        /* two boc partition */
+        .two_box {
+            width: 100%;
+            margin: auto;
+            ;
+            margin-top: 5%;
+            display: flex;
+        }
+
+        .two_box div {
+            width: 45%;
+            margin: auto;
+            text-align: center;
+        }
+
+        .two_box button {
+            width: 50%;
+            border: 1px solid black;
+            border-radius: 3px;
+            margin: auto;
+            margin-top: 2%;
+            background-color: #B2FF59;
+            padding-top: 1%;
+            padding-bottom: 1%;
+        }
+
+        .two_box div+div button {
+            background-color: #FFC686;
+        }
+
+        .two_box p {
+            font-size: 14px;
+        }
+
+
+        .two_box img {
+            width: 100%;
+        }
+
+        /*   */
+        .sandle_image2 {
+            width: 100%;
+            margin: auto;
+            margin-top: 7%;
+            padding: auto;
+        }
+
+        /* set your sole free */
+
+        .set_your {
+            width: 100%;
+            margin: auto;
+            padding-top: 5%;
+            padding-bottom: 5%;
+            text-align: center;
+
+        }
+
+        .set_your div {
+            width: 60%;
+            box-sizing: border-box;
+            display: flex;
+            margin: auto;
+
+        }
+
+        .set_your div div {
+            font-weight: bold;
+            box-sizing: border-box;
+            border-radius: 2px;
+            margin: auto;
+            margin-left: 5%;
+            text-align: center;
+            background-color: #7986CB;
+            padding-left: 10%;
+        }
+
+        /*  Buy now pay later */
+        .buy_now {
+            width: 100%;
+            margin: auto;
+            background-color: #fcb3c7;
+            padding-top: 1%;
+            padding-bottom: 1%;
+            text-align: center;
+
+        }
+
+        /* footer */
+
+        .about_section {
+            width: 100%;
+            padding: 2%;
+            display: grid;
+            grid-template-columns: repeat(4, 25%);
+
+        }
+
+        .about_section div a {
+            display: block;
+        }
+
+        .about_section div a {
+            color: #37474F;
+            text-decoration: none;
+            /* margin: 2% 2% !important; */
+            margin-bottom: 3%;
+
+        }
+
+        footer {
+            margin: auto;
+            display: flex;
+            background-color: #333;
+            color: white;
+            padding-top: 2%;
+            padding-left: 2%;
+            font-size: 12px;
+            padding-bottom: 10%;
+        }
+
+        ul.no-bullets {
+            display: flex;
+            list-style-type: none;
+            margin-right: 20%;
+        }
+
+        ul.no-bullets li {
+            padding-right: 5%;
+        }
+
+
+        footer div img {
+            width: 80px;
+            height: 50px;
+            padding-top: 4%;
+            margin-right: 5%;
+        }
+
+        hr {
+            width: 100%;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="spring">
+        S P R I N G H A S S P R U N G ! <span>2 5 % O F F S E L E C T S T Y L E S *</span> U S E C O D E: S P R I N G 2
+        5
+
+    </nav>
+
+
+    <nav class="login_nav">
+        <div>
+            <i style="font-size:20px; color:#455A64; margin-right: -10px;" class="fa">&#xf0d1;</i>
+            <a href="">Track Order</a>
+            <i style="font-size:20px; color:#455A64; margin-right: -10px;" class="fa">&#xf041;</i>
+            <a href="">Store Locator</a>
+            <i class="fa fa-user" style="font-size:20px; color:#455A64; margin-right: -10px;"></i>
+            <a href="">Log In / Register</a>
+        </div>
+
+    </nav>
+
+    <!--  Main navbar -->
+
+    <nav class="main">
+        <div>
+            <img src="../images//gifmaker_me (1).gif" alt="">
+            <a href="">Woman</a>
+            <a href="">Men</a>
+            <a href="">Kids</a>
+            <a href="">Originals</a>
+            <a href="">Accessories</a>
+            <a href="">Sale</a>
+            <a href="">Sustainability</a>
+        </div>
+
+        <div class="cart">
+            <div>
+                <i style="font-size:35px ;" class="fa fa-search"></i>
+            </div>
+            <div>
+                <i style="font-size:35px" class="fa">&#xf07a;</i>
+
+            </div>
+        </div>
+    </nav>
+
+    <nav class="spring2">
+        FREE SHIPPING <span>ON ORDERS OVER $50 | </span> FREE RETURN EVERYDA Y
+        5
+
+    </nav>
+    <img class="sandle_image"
+        src="https://clarks.scene7.com/is/image/Pangaea2Build/SandalShop_W_KimmeiHi_DesktopBanner_1500x500px?fmt=webp&wid=1500"
+        alt="https://clarks.scene7.com/is/image/Pangaea2Build/SandalShop_W_KimmeiHi_DesktopBanner_1500x500px?fmt=webp&wid=1500">
+
+    <div class="statement">
+
+        <h2>STATEMENT-MAKING SANDALS</h2>
+        <P>Fashion and funtion make this a sabdal you'll be wearing on repear ! Our syper- <br>
+            versatile staples are made for wearing everywhere, with everything this season.
+        </P>
+        <div>
+            <div>
+                <p>Shop All Women's Sandals</p>
+            </div>
+            <div>
+                <p>Shop Kimmei Hi Strap</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="two_box">
+        <div>
+            <img src="https://clarks.scene7.com/is/image/Pangaea2Build/BAN18_19W_ElleriRaeTabletBanner_705x395px_V2?fmt=webp&wid=705"
+                alt="https://clarks.scene7.com/is/image/Pangaea2Build/BAN18_19W_ElleriRaeTabletBanner_705x395px_V2?fmt=webp&wid=705">
+            <h2>UPGRADE YOUR STYLE, FREE YOUR FEET</h2>
+            <p>Fall head over heels for wedge sandal Elleri Rae and elevate this year's warm-weather wardrobe with
+                comfortable,
+                on-trend silhouettes that boost your unique style as much as your every step.</p>
+            <button>
+                Shop Women's wedge Snadals
+            </button>
+            <button>Shop Woman's Sandlas</button>
+        </div>
+
+        <div>
+            <img src="https://clarks.scene7.com/is/image/Pangaea2Build/BAN18_19_M_GorskyStepTabletBanner705x705px?fmt=webp&wid=705"
+                alt="https://clarks.scene7.com/is/image/Pangaea2Build/BAN18_19_M_GorskyStepTabletBanner705x705px?fmt=webp&wid=705">
+            <h2>LAID-BACK SUMMER STYLE. </h2>
+
+            <p>Slip-on-and-go with the Gorsky Step. This lightweight style is unlined for a breathable, barefoot feel
+                with a supportive
+                Contour Cushion footbed for immediate comfort.</p>
+            <button>
+                Shop Men's Summer Collection
+            </button>
+            <button>Shop Men's Casual Styles</button>
+        </div>
+
+    </div>
+
+    <img class="sandle_image2"
+        src="https://clarks.scene7.com/is/image/Pangaea2Build/BAN_WKs18_19W_BrinkleyFlora_NeonCoral_DesktopBanner_1500x500px_Watermarked?fmt=webp&wid=1500"
+        alt="https://clarks.scene7.com/is/image/Pangaea2Build/BAN_WKs18_19W_BrinkleyFlora_NeonCoral_DesktopBanner_1500x500px_Watermarked?fmt=webp&wid=1500">
+
+
+    <div class="set_your">
+
+        <h2>SET YOUR SOLE FREE THIS SUMMER!</h2>
+        <p>Pack light, step lighter. The Cloudsteppers™ Brinkley Flora flip-flop comes <br> in coral for a look and feel
+            that's as light
+            and bright as summer should be.</p>
+        <div>
+            <div>
+                <p>Shop All Women's Sandals</p>
+            </div>
+            <div>
+                <p>Shop Kimmei Hi Strap</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="buy_now">
+        <span>Buy now. Pay Later. with KIarna. <a href="">Find out more</a> </span>
+    </div>
+
+    <!-- footer -->
+    <div class="about_section">
+        <div>
+            <hr>
+            <h4>DEPARTMENTS</h4>
+            <hr>
+            <a href="">Womens</a>
+            <a href="">Mens</a>
+            <a href="">Originals</a>
+            <a href="">Kids</a>
+            <a href="">Styles & Stories</a>
+            <a href="">Sale</a>
+            <a href="">Blog</a>
+
+        </div>
+
+
+        <div>
+            <hr>
+            <h4>HELPS</h4>
+            <hr>
+            <a href="">Product Recall</a>
+            <a href="">Customer Service</a>
+            <a href="">Shipping & Delivery</a>
+            <a href="">Order Lookup</a>
+            <a href="">Returns</a>
+            <a href="">Compare At Pricing</a>
+            <a href="">FAQs</a>
+            <a href="">ID.ME FAQs</a>
+            <a href="">Accessability</a>
+
+
+        </div>
+
+        <div>
+            <hr>
+            <h4>ABOUT SHOEMPIRE</h4>
+            <hr>
+            <a href="">About Us</a>
+            <a href="">Affilate Program</a>
+            <a href="">Carrer</a>
+            <a href="">California- Do Not Sell my Info</a>
+            <a href="">California Supply Chains Act</a>
+            <a href="">Corprative Resposibility</a>
+            <a href="">Technologies</a>
+            <a href="">Cookie Policy</a>
+
+        </div>
+
+        <div>
+            <hr>
+            <h4>SHOEMPIRE.COM</h4>
+            <hr>
+            <a href="">Gift Cards</a>
+            <a href="">Gift card Balance</a>
+            <a href="">Size Guide</a>
+            <a href="">Shoe Care Guide</a>
+
+        </div>
+
+
+
+    </div>
+
+
+    <footer>
+
+
+        <ul class="no-bullets">
+            <li>Terms and Conditions</li>
+            <li>Privacy Policy</li>
+            <li>CCPA Privacy Policy</li>
+
+        </ul>
+        <div>
+            <p>© C&J Clark International 2023. Clarks and the Clarks logo are registered trademarks of C&J Clark
+                International Limited.</p>
+            <p>C & J Clark America, Inc., 140 Kendrick Street, Needham, MA 02494</p>
+
+            <img src="../images//discover.png" alt="">
+            <img src="../images//paypal.png" alt="">
+            <img src="../images//Klarna.png" alt="">
+            <img src="../images//mastercard.png" alt="">
+
+            <img src="../images/visa.png" alt="">
+
+        </div>
+
+
+    </footer>
+
+
+</body>
+<script>
+</script>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action="">
+        <span>Title</span> <br>
+        <input type="text"> <br>
+
+        <span>Gender</span> <br>
+        <input type="text"> <br>
+
+        <span>Category</span> <br>
+        <input type="text"> <br>
+
+        <span>Style</span> <br>
+        <input type="text"> <br>
+
+        <span>Material</span> <br>
+        <input type="text"> <br>
+
+        <span>Rating</span> <br>
+        <input type="number" min="0" max="5"> <br>
+
+        <span>Rating Count</span> <br>
+        <input type="number" min="0"> <br>
+
+        <span>Price</span> <br>
+        <input type="number" min="0"> <br>
+
+        <span>Image Link</span> <br>
+        <input type="text"> <br>
+
+
+        <span>Total Quantity</span> <br>
+        <input type="number" min="0"> <br>
+
+        <span>Descripttion</span> <br>
+        <input type="text"> <br>
+
+        <span>Arival</span> <br>
+        <input type="date"> <br>
+
+        <input type="Submit" placeholder="Submit"> <br>
+
+    </form>
+
+</body>
+
+<script>
+    let url = "http://localhost:8080"
+
+    let form = document.querySelector("form")
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        let title = form[0].value;
+        let gender = form[1].value;
+        let category = form[2].value;
+        let style = form[3].value;
+        let material = form[4].value
+        let rating = form[5].value;
+        let rating_count = form[6].value
+        let price = form[7].value;
+        let image = form[8].value;
+
+        let item_left = form[9].value;
+        let description = form[10].value
+        let arival = form[11].value
+
+        if (!title || !gender || !category || !rating || !style || !material || !rating_count || !price || !image || !item_left || !description || !arival) {
+            alert("Please fill all the field !")
+            return
+        }
+
+        let obj = { title, gender, category, style, rating, material, rating_count, price, image, item_left, description, arival }
+
+        fetch(`${url}/products`, {
+            method: "POST",
+            mode: 'cors',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(obj)
+        }).then((res) => {
+            return res.json();
+        }).then((data) => {
+
+            alert(`${data.message}`)
+            form.reset();
+        }).catch((err) => {
+            console.log(err)
+        })
+    })
+
+</script>
+
+</html>

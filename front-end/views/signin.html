@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="POST">
+
+        <span>Email addess</span> <br>
+        <input type="text"> <br>
+
+
+        <span>Password</span><br>
+        <input type="text" minlength="8" maxlength="14"> <br>
+
+        <input type="submit" placeholder="Signin">
+
+    </form>
+
+</body>
+<script>
+
+    let url = "http://localhost:8080"
+
+    let token;
+
+    let form = document.querySelector('form');
+    form.addEventListener("submit", (e) => {
+        e.preventDefault()
+        let email = form[0].value;
+
+        let password = form[1].value
+        let obj = { email, password }
+
+        if (!email || !password) {
+            alert("please fill all details !!")
+            return
+        }
+        fetch(`${url}/signin`, {
+            method: "POST",
+            mode: "cors",
+            body: JSON.stringify(obj),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then((res) => {
+            return res.json();
+        }).then((data) => {
+
+            if (data.token) {
+                localStorage.setItem("token", JSON.stringify(data.token))
+                return;
+            }
+            alert(`${data.message}`)
+        }).catch((err) => {
+            console.log(err)
+        })
+    })
+</script>
+
+</html>

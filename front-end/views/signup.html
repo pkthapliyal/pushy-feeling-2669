@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="POST">
+
+        <span>Email addess</span> <br>
+        <input type="text"> <br>
+
+        <span>First Name</span> <br>
+        <input type="text"> <br>
+
+        <span>Last Name</span> <br>
+        <input type="text"> <br>
+
+        <span>Date Of Birth</span> <br>
+        <input type="date"> <br>
+
+        <span>Mobile Number</span> <br>
+        <input type="tel" size="10" minlength="10" maxlength="10"> <br>
+
+        <span>User Name</span> <br>
+        <input type="text" minlength="8" maxlength="14"> <br>
+
+        <span>Password</span><br>
+        <input type="text" minlength="8" maxlength="14"> <br>
+
+        <input type="submit" placeholder="Signup">
+
+    </form>
+
+</body>
+<script>
+
+    let url = "http://localhost:8080"
+    let form = document.querySelector('form');
+    form.addEventListener("submit", (e) => {
+        e.preventDefault()
+        let email = form[0].value;
+        let first_name = form[1].value;
+        let last_name = form[2].value;
+        let dob = form[3].value;
+        let mobile = form[4].value;
+        let user_name = form[5].value;
+        let password = form[6].value
+        let obj = { email, first_name, last_name, dob, mobile, user_name, password }
+        if (!email || !first_name || !last_name || !dob || !mobile || !user_name || !password) {
+            alert("please fill all details !!")
+            return
+        }
+        fetch(`${url}/signup`, {
+            method: "POST",
+            mode: "cors",
+            body: JSON.stringify(obj),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then((res) => {
+            return res.json();
+        }).then((data) => {
+            console.log(data)
+            alert(`${data.message}`)
+        }).catch((err) => {
+            console.log(err)
+        })
+    })
+</script>
+
+</html>
