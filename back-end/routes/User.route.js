@@ -40,7 +40,6 @@ userRoute.post("/signin", async (req, res) => {
         }
         let payload = { userID: user._id, email: user.email }
         let token = jwt.sign(payload, "secretKey");
-        console.log(token)
         res.status(200).send({ "token": token })
 
     })
