@@ -30,4 +30,19 @@ productRoute.post("/", async (req, res) => {
 })
 
 
+//   all user product routes are here -- > /
+
+
+productRoute.get("/user", async (req, res) => {
+    const token = req.headers.authorization;
+    tokenvalue = token.replace("Bearer ", "")
+    jwt.verify(tokenvalue, "secretKey", async (error, decoded) => {
+        if (err) {
+            return res.status(404).send({ "message": error.message })
+        }
+        console.log(decoded)
+    })
+    res.send()
+})
+
 module.exports = { productRoute }
