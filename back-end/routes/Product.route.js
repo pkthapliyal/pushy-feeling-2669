@@ -7,9 +7,49 @@ const productRoute = express.Router();
 const { ProductModel } = require("../models/product.model");
 
 productRoute.get("/", async (req, res) => {
-    products = await ProductModel.find()
-    res.send(products)
+
+    try {
+        // if (req.query.id) {
+        //     products = await ProductModel.findById({ _id: req.params.id })
+        //     return res.send(products)
+        // }
+        const { sort_arival } = req.query
+        if (sort_arival) {
+            products = await ProductModel.find().sort({ arival: 1 })
+            return res.send(products)
+        }
+        const { search } = req.query
+        if (search) {
+
+            products = await ProductModel.find({ description: { $regex: search, $options: "i" } })
+
+            if (products.length == 0) {
+
+                return res.status(404).send({ "message": "try something else" })
+            }
+
+            return res.send(products)
+        }
+
+
+        products = await ProductModel.find()
+        return res.send(products)
+
+    } catch (error) {
+        res.status(404).send(error.message)
+
+    }
+
 })
+
+// Product by id ;
+productRoute.get("/:id", async (req, res) => {
+    // console.log(req.params.id)
+    products = await ProductModel.findById({ _id: req.params.id })
+    return res.send(products)
+
+})
+
 
 productRoute.post("/", async (req, res) => {
     const { title, gender, category, style, rating, rating_count, price, image, available, item_left, description } = req.body;
@@ -42,7 +82,8 @@ productRoute.get("/user", async (req, res) => {
         }
         console.log(decoded)
     })
-    res.send()
+
 })
+
 
 module.exports = { productRoute }

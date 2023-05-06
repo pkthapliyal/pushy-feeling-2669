@@ -10,9 +10,11 @@ app.use(cors())
 
 const { userRoute } = require("./routes/User.route")
 const { productRoute } = require("./routes/Product.route")
+const { cartRoute } = require("./routes/Cart.route")
 
 app.use("/", userRoute)
 app.use("/products", productRoute)
+app.use("/cart", cartRoute)
 
 const connection = require("./db");
 
