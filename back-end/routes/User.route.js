@@ -6,6 +6,17 @@ const userRoute = express.Router();
 
 const { UserModel } = require("../models/user.model");
 
+
+userRoute.get("/users", async (req, res) => {
+
+    try {
+        data = await UserModel.find()
+        return res.status(200).send(data);
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 userRoute.post("/signup", async (req, res) => {
 
     const { email, first_name, last_name, dob, mobile, user_name, password } = req.body;
@@ -40,7 +51,7 @@ userRoute.post("/signin", async (req, res) => {
         }
         let payload = { userID: user._id, email: user.email }
         let token = jwt.sign(payload, "secretKey");
-        res.status(200).send({ "token": token })
+        res.status(200).send({ "token": token, "username": user.first_name })
 
     })
 

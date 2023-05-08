@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.0/jspdf.debug.js"></script>
+
+    <title>Document</title>
+    <style>
+        * {
+            font-family: 'Montserrat';
+        }
+
+        .login_nav {
+            width: 100%;
+            height: 45px;
+            margin: auto;
+            padding: auto;
+            background-color: #F3F3F3;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+
+        }
+
+        .login_nav div {
+            width: 35%;
+            padding-right: 1%;
+            color: #37474F;
+            display: flex;
+            justify-content: space-evenly;
+            font-size: 15px;
+            ;
+        }
+
+        .login_nav div a {
+            text-decoration: none;
+            color: #37474F;
+        }
+
+
+        /*  Main nav bar */
+        .main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* margin-bottom: -1%; */
+        }
+
+        .main img {
+            width: 10%;
+        }
+
+        .main div {
+            display: flex;
+            align-items: center;
+        }
+
+        .main a {
+            margin-left: 1%;
+            margin-right: 1%;
+            text-decoration: none;
+            color: #37474F;
+        }
+
+        .main a:hover {
+            margin-left: 1%;
+            margin-right: 1%;
+            font-weight: bold;
+            color: #263238;
+        }
+
+        .cart {
+            margin-right: 1%;
+            width: 20%;
+            height: 65px;
+            text-align: center;
+            margin: auto;
+        }
+
+        .cart div i {
+            margin: auto;
+        }
+
+        .cart div:nth-child(1) {
+            /* border: 1px solid #1976D2; */
+            width: 50%;
+            height: 75px;
+
+        }
+
+        .cart div:nth-child(2) {
+            background-color: #1976D2;
+            color: white;
+            width: 50%;
+            height: 75px;
+        }
+
+        /*  users details */
+        #contanier {
+            width: 90%;
+            margin: auto;
+            margin-top: 130px;
+            padding: 5%;
+            /* box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset; */
+
+        }
+
+        table {
+            width: 100%;
+            box-sizing: border-box;
+            box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+
+        }
+
+        table,
+        th,
+        td {
+            box-sizing: border-box;
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 8px;
+        }
+
+
+
+        p,
+        h3,
+        h4 {
+            padding: 3px;
+            margin: 0px;
+        }
+
+
+        /* footer */
+
+        .about_section {
+            width: 100%;
+            margin: auto;
+            margin-top: 20%;
+            padding: 2%;
+            display: grid;
+            grid-template-columns: repeat(4, 25%);
+
+        }
+
+        .about_section div a {
+            display: block;
+        }
+
+        .about_section div a {
+            color: #37474F;
+            text-decoration: none;
+            /* margin: 2% 2% !important; */
+            margin-bottom: 3%;
+
+        }
+
+        footer {
+            margin: auto;
+            display: flex;
+            background-color: #333;
+            color: white;
+            padding-top: 2%;
+            padding-left: 2%;
+            font-size: 12px;
+            padding-bottom: 10%;
+        }
+
+        ul.no-bullets {
+            display: flex;
+            list-style-type: none;
+            margin-right: 20%;
+        }
+
+        ul.no-bullets li {
+            padding-right: 5%;
+        }
+
+
+        footer div img {
+            width: 80px;
+            height: 50px;
+            padding-top: 4%;
+            margin-right: 5%;
+        }
+
+
+
+
+
+
+        /*  back to shopping */
+
+        #backTohomepage {
+            background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+            background-color: #20bf55;
+            height: 30px;
+            color: white;
+            position: fixed;
+            text-decoration: none;
+            font-size: 20px;
+            padding: 5px;
+            margin-top: 1%;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="login_nav">
+        <div>
+            <i style="font-size:20px; color:#455A64; margin-right: -10px;" class="fa">&#xf0d1;</i>
+            <a href="">Track Order</a>
+            <i style="font-size:20px; color:#455A64; margin-right: -10px;" id="fa" class="fa">&#xf041;</i>
+            <a href="" id="storeLocator">Store Locator</a>
+            <i class="fa fa-user" style="font-size:20px; color:#455A64; margin-right: -10px;"></i>
+            <a href="./signin.html" id="logInStatus">Log In / Register</a>
+        </div>
+
+    </nav>
+    <p></p>
+    <!--  Main navbar -->
+
+    <nav class="main">
+        <div>
+            <img src="/front-end/images//gifmaker_me (1).gif" alt="">
+            <a href="./admin.product.html">Homepage</a>
+            <a href="./admin.product.html">Men</a>
+            <a href="./admin.product.html">Woman</a>
+            <a href="./orders.html">Orders</a>
+            <a href="">Accessories</a>
+            <a href="">Sale</a>
+            <a href="">Users</a>
+        </div>
+
+        <div class="cart">
+            <div>
+                <i style="font-size:35px ;" class="fa fa-search"></i>
+            </div>
+            <div>
+                <a href="./cart.html"> <i style="font-size:35px ; color: white; padding-left: 34%;" class="fa">&#xf07a;
+                    </i></a>
+            </div>
+        </div>
+    </nav>
+    <hr>
+
+    <a href="./admin.product.html" id="backTohomepage"> &#8617; Back to Homepage </a>
+
+
+
+    <div id="contanier">
+        <h1>All Users</h1>
+
+        <table id="recipt">
+            <tr id="row">
+                <th>Sr. No.</th>
+                <th>user ObjectID</th>
+                <th>Full Name</th>
+                <th>Registered Email</th>
+                <th>User Name</th>
+                <th>Mobile</th>
+                <th>Date of Birth</th>
+            </tr>
+
+            <tbody id="elements">
+
+                <!-- append item bill here -->
+
+            </tbody>
+
+        </table>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- footer -->
+    <div class="about_section">
+        <div>
+            <hr>
+            <h4>DEPARTMENTS</h4>
+            <hr>
+            <a href="">Womens</a>
+            <a href="">Mens</a>
+            <a href="">Originals</a>
+            <a href="">Kids</a>
+            <a href="">Styles & Stories</a>
+            <a href="">Sale</a>
+            <a href="">Blog</a>
+
+        </div>
+
+
+        <div>
+            <hr>
+            <h4>HELPS</h4>
+            <hr>
+            <a href="">Product Recall</a>
+            <a href="">Customer Service</a>
+            <a href="">Shipping & Delivery</a>
+            <a href="">Order Lookup</a>
+            <a href="">Returns</a>
+            <a href="">Compare At Pricing</a>
+            <a href="">FAQs</a>
+            <a href="">ID.ME FAQs</a>
+            <a href="">Accessability</a>
+        </div>
+
+        <div>
+            <hr>
+            <h4>ABOUT SHOEMPIRE</h4>
+            <hr>
+            <a href="">About Us</a>
+            <a href="">Affilate Program</a>
+            <a href="">Carrer</a>
+            <a href="">California- Do Not Sell my Info</a>
+            <a href="">California Supply Chains Act</a>
+            <a href="">Corprative Resposibility</a>
+            <a href="">Technologies</a>
+            <a href="">Cookie Policy</a>
+
+        </div>
+
+        <div>
+            <hr>
+            <h4>SHOEMPIRE.COM</h4>
+            <hr>
+            <a href="">Gift Cards</a>
+            <a href="">Gift card Balance</a>
+            <a href="">Size Guide</a>
+            <a href="">Shoe Care Guide</a>
+        </div>
+    </div>
+
+
+
+    <footer>
+
+
+        <ul class="no-bullets">
+            <li>Terms and Conditions</li>
+            <li>Privacy Policy</li>
+            <li>CCPA Privacy Policy</li>
+        </ul>
+        <div>
+            <p>© C&J SHOEMPIRE International 2023. Clarks and the Clarks logo are registered trademarks of C&J
+                SHOEMPIRE
+                International Limited.</p>
+            <p>C & J SHOEMPIRE America, Inc., 140 Kendrick Street, Needham, MA 02494</p>
+
+            <img src="/front-end/images//discover.png" alt="">
+            <img src="/front-end/images//paypal.png" alt="">
+            <img src="/front-end/images//Klarna.png" alt="">
+            <img src="/front-end/images//mastercard.png" alt="">
+            <img src="/front-end/images//visa.png" alt="">
+        </div>
+    </footer>
+
+
+</body>
+
+<script>
+    let url = "http://localhost:8080"
+
+    let token = JSON.parse(localStorage.getItem("token"))
+
+    let logInStatus = document.getElementById('logInStatus')
+
+    if (token) {
+        logInStatus.innerText = "Sign Out"
+        logInStatus.href = "./index.html"
+
+        document.getElementById('storeLocator').innerText = "Hey! " + JSON.parse(localStorage.getItem("username"))
+        document.getElementById('fa').innerHTML = ""
+    }
+    if (!token) {
+        document.getElementById('warning').innerText = ""
+    }
+
+    logInStatus.addEventListener("click", (e) => {
+        localStorage.removeItem("token")
+        localStorage.removeItem("bill");
+        localStorage.removeItem("addressData")
+        localStorage.removeItem("address")
+    })
+
+
+
+
+
+
+    // function fetchProducts() {
+    //     fetch(`${url}/admin/users`)
+    //         .then((res) => {
+    //             return res.json();
+    //         }).then((data) => {
+    //             console.log(data)
+    //         }).catch((err) => {
+    //             console.log(err)
+    //         })
+    // }
+    // fetchProducts()
+
+    fetch(`${url}/users`, {
+        method: "GET",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+        .then((res) => {
+            return res.json();
+        }).then((data) => {
+            console.log(data)
+            showUsers(data)
+        }).catch((err) => {
+            console.log(err)
+        })
+
+    let Tbody = document.getElementById("elements")
+
+    function showUsers(data) {
+        let Serial = 1
+        data.forEach((e, index) => {
+
+            let row = document.createElement("tr")
+
+            let Sr = document.createElement("td")
+            let userID = document.createElement("td")
+            let name = document.createElement("td")
+            let email = document.createElement("td")
+            let username = document.createElement("td")
+            let mobile = document.createElement("td")
+            let dob = document.createElement("td")
+
+
+            Sr.innerText = Serial;
+            userID.innerText = e._id;
+            name.innerText = e.first_name + " " + e.last_name;
+            email.innerText = e.email;
+            username.innerText = e.user_name;
+            mobile.innerText = e.mobile;
+            dob.innerText = e.dob
+
+            row.append(Sr, userID, name, email, username, mobile, dob)
+            Tbody.append(row)
+            Serial++
+
+            row.setAttribute("id", "row")
+
+        })
+    }
+
+
+
+
+
+
+
+
+</script>
+
+</html>
