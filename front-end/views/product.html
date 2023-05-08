@@ -16,6 +16,28 @@
             font-family: 'Montserrat';
         }
 
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            font-size: 60px;
+            font-weight: bolder;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            color: #1976D2;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+            padding: 5px;
+        }
+
         .spring {
             width: 100%;
             margin-top: auto;
@@ -94,20 +116,20 @@
         }
 
         .cart {
-            margin-right: 1%;
             width: 20%;
             height: 65px;
             text-align: center;
-            margin: auto;
         }
 
         .cart div i {
-            margin: auto;
+            margin-left: 25%;
+            font-size: 35px;
+            padding: 5%
         }
 
         .cart div:nth-child(1) {
             /* border: 1px solid #1976D2; */
-            width: 50%;
+            width: 45%;
             height: 75px;
 
         }
@@ -120,7 +142,7 @@
         }
 
         .spring2 {
-            margin-top: auto;
+            margin-top: 1%;
             background-color: #dcdcdc;
             font-size: 16px;
             text-align: center;
@@ -392,10 +414,10 @@
         <div>
             <i style="font-size:20px; color:#455A64; margin-right: -10px;" class="fa">&#xf0d1;</i>
             <a href="">Track Order</a>
-            <i style="font-size:20px; color:#455A64; margin-right: -10px;" class="fa">&#xf041;</i>
-            <a href="">Store Locator</a>
+            <i style="font-size:20px; color:#455A64; margin-right: -10px;" id='fa' class="fa">&#xf041;</i>
+            <a href="" id="storeLocator">Store Locator</a>
             <i class="fa fa-user" style="font-size:20px; color:#455A64; margin-right: -10px;"></i>
-            <a href="../views/signin.html">Log In / Register</a>
+            <a href="../views/signin.html" id="logInStatus">Log In / Register</a>
         </div>
 
     </nav>
@@ -416,11 +438,10 @@
 
         <div class="cart">
             <div>
-                <i style="font-size:35px ;" class="fa fa-search"></i>
+                <i class="fa fa-search"></i>
             </div>
             <div>
-                <i style="font-size:35px" class="fa">&#xf07a;</i>
-
+                <a href="./cart.html"><i class="fa" style="color: white;">&#xf07a; </i></a>
             </div>
         </div>
     </nav>
@@ -651,12 +672,30 @@
 
 
 
+    <button onclick="topFunction()" id="myBtn" title="Go to top">&#x21ee;</button>
+
+
+
 </body>
 
 <script>
+
     let token = JSON.parse(localStorage.getItem("token"))
+    let logInStatus = document.getElementById('logInStatus')
+
+    if (token) {
+        logInStatus.innerText = "Sign Out"
+        logInStatus.href = "./index.html"
+        document.getElementById('storeLocator').innerText = "Hey! " + JSON.parse(localStorage.getItem("username"))
+        document.getElementById('fa').innerHTML = ""
+    }
+    logInStatus.addEventListener("click", (e) => {
+        localStorage.removeItem("token")
+    })
+
 
     let url = "http://localhost:8080"
+
     fetch(`${url}/products`)
         .then((res) => {
             return res.json();
@@ -669,13 +708,8 @@
             console.log(err)
         })
 
-    //  sort by newest arival 
-
-
-
+    //  All products containining here
     let productContainer = document.getElementById('productContainer');
-
-
     function showData(data) {
         let product_list = `<div class="product-list" >
                         ${data.map((item) =>
@@ -683,10 +717,10 @@
         ).join("")}
 
         </div>`
-
         productContainer.innerHTML = product_list;
     }
 
+    //  Small card 
     function productMaker(title, image, category, gender, price, rating, rating_count, itemID) {
         let off = Math.floor((price - 1000) / price * 100)
         let star = ""
@@ -712,19 +746,16 @@
         <button class="add" id="add" onclick=addToCart('${itemID}')>Add to card</button>
          <button class="buy" id="buy">Buy</button>
             
-    
     </div>`
         return product;
     }
 
     //  add to cart function 
-
     function addToCart(ID) {
         if (!token) {
             alert("please login / register first to add in cart")
             return;
         }
-
         fetch(`${url}/cart/${ID}`, {
             method: "POST",
             mode: "cors",
@@ -735,6 +766,7 @@
         }).then((res) => {
             return res.json()
         }).then((data) => {
+            alert(data.message)
             console.log(data)
         }).catch((err) => {
             console.log(err)
@@ -742,7 +774,6 @@
 
         event.stopPropagation()
     }
-
 
 
     //   get the individual product for description 
@@ -759,7 +790,6 @@
     }
 
 
-
     //  filter and sort function -------->>>>>>>>>>>>>
 
     let Gender = document.querySelectorAll(".genderInp input")
@@ -772,9 +802,7 @@
     function filterData(product) {
         for (let i = 0; i < Gender.length; i++) {
             Gender[i].checked = false
-
             Gender[i].addEventListener("change", () => {
-
                 productContainer.innerHTML = ""
                 let genderData = product.filter((element) => {
                     if (element.gender == Gender[i].value) {
@@ -962,9 +990,6 @@
     searchBtn.addEventListener("click", searchData)
 
     let timeOut;
-
-
-
     let count = 0;
 
     searchBox.addEventListener("input", function () {
@@ -974,10 +999,8 @@
 
 
     function searchData(event) {
-
         if (event.key === "Enter") {
             event.preventDefault();
-
             searchBtn.click();
             fetch(`${url}/products/?search=${searchBox.value}`)
                 .then((res) => {
@@ -1008,10 +1031,21 @@
 
     }
 
-
-
-
-
+    //  scroll function ;
+    let mybutton = document.getElementById("myBtn");
+    window.onscroll = function () { scrollFunction() };
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
 
 
 

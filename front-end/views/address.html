@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Document</title>
     <style>
         * {
@@ -101,6 +100,104 @@
             height: 75px;
         }
 
+        /* adress container */
+        #addressContainer {
+            /* width: 40%; */
+            display: flex;
+
+        }
+
+        #savedAddressContainer {
+            width: 30%;
+        }
+
+        #savedAddressContainer div {
+            width: 90%;
+            margin: auto;
+            margin-bottom: 15%;
+            margin-bottom: 10%;
+            padding: 3%;
+            box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+        }
+
+        #savedAddressContainer div input {
+            width: 95%;
+        }
+
+        #savedAddressContainer div button {
+            margin-top: 2%;
+            height: 30px;
+            width: 32%;
+            background-color: rgb(51, 51, 51);
+            color: white;
+            border-radius: 3px;
+            font-weight: bold;
+            border: none;
+        }
+
+
+        #container {
+            width: 32%;
+            margin: auto;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            padding: 30px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+
+        }
+
+        h2 {
+            background-color: rgb(51, 51, 51);
+            color: white;
+            padding: 10px;
+
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            margin-left: 20px;
+        }
+
+        label {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        input {
+            padding: 5px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            padding-left: 3%;
+        }
+
+        button[type="submit"] {
+            background-color: #546E7A;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #333;
+        }
+
+        /*  saved data */
+        /* #address-form1 {
+            margin-bottom: 10%;
+            border: 1px solid blue;
+            padding: 3%;
+            box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+        } */
+
 
 
         /* footer */
@@ -156,23 +253,8 @@
             margin-right: 5%;
         }
 
-        /*  container */
-        #container {
-            width: 100%;
-            margin: auto;
-            margin-top: 1%;
-            border: 1px solid black;
-            display: flex;
-            /* padding-bottom: 100%; */
 
-        }
-
-
-
-
-
-        /*  container containing product */
-
+        /*  back button */
         #continueShop {
             height: 30px;
             color: white;
@@ -185,83 +267,7 @@
             background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
         }
 
-
-        #productContainer {
-            width: 65%;
-
-        }
-
-        #product {
-            /* width: 100%; */
-            margin: auto;
-            padding: 3%;
-            margin-left: 5%;
-            border-radius: 1%;
-            box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-            display: grid;
-            grid-template-columns: 30% 30% 10% 10% 10%;
-            column-gap: 0px;
-            row-gap: 1%;
-
-        }
-
-        .product div {
-            border: 1px solid teal;
-
-        }
-
-        .product:hover {
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
-        }
-
-        .product_img {
-            width: 100%;
-            margin: auto;
-            /* border: 1px solid teal; */
-        }
-
-
-        .checked {
-            color: #C33764;
-        }
-
-        .deleteItem {
-            /* width: 40%; */
-            height: 40px;
-            /* background-color: #1976D2; */
-            /* color: white; */
-            border-radius: 5px;
-            border: none;
-            font-weight: bold;
-            font-size: 16px;
-            margin-bottom: -5%;
-        }
-
-
-        /*  bill */
-        #bill {
-            width: 28%;
-            font-size: 14px;
-            background-color: white;
-            position: fixed;
-            padding: 2%;
-            margin-top: 20%;
-            position: fixed;
-            top: 8px;
-            right: 16px;
-            box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
-
-        }
-
-        #buyAll {
-            width: 100%;
-            background-color: #263238;
-            padding: 10px;
-            color: white;
-            font-weight: bold;
-            margin-top: 5%;
-            text-decoration: none;
-        }
+        /*  saved address container */
     </style>
 </head>
 
@@ -297,52 +303,57 @@
                 <i style="font-size:35px ;" class="fa fa-search"></i>
             </div>
             <div>
-                <i style="font-size:35px" class="fa">&#xf07a;</i>
+                <a href="./cart.html"> <i style="font-size:35px ; color: white; padding-left: 34%;" class="fa">&#xf07a;
+                    </i></a>
             </div>
         </div>
     </nav>
     <hr>
-    <div style="margin:auto; width: 40%; text-align: center;" id="cartInfo">
-        <h2>SHOPPING CART</h2>
-        <h4>You have no items in your shopping cart.</h4>
-        <h4><a style="text-decoration: none;" href="./product.html">Click here</a> to continue shopping.</h4>
-    </div>
 
-    <div style="margin:auto; width: 40%; text-align: center;">
-        <h2>SHOPPING CART</h2>
-    </div>
-    <div style="width:100%; background-color: #B2DFDB;padding-top:10px; padding-bottom: 10px; padding-left: 5%; "
-        id="coupen">Coupon
-        (Buy3@15%Off) applied
-        successfully.</div>
+    <a href="./cart.html" id="continueShop"> &#8617; Back to Cart </a>
 
-    <a href="./product.html" id="continueShop"> &#8617; Continue Shopping </a>
+    <div id="addressContainer">
 
+        <div id="savedAddressContainer">
 
-    <div id="container">
-
-
-
-
-        <div id="productContainer">
-            <h3 id="warning">loading . . .</h3>
 
         </div>
-        <div id="bill">
-            <div id="total">
-                <h3>Subtotal : <span id="cartTotal">0 Rs.</span></h3>
-                <span id="discount">please shop above 35000 Rs. to get discount of 20% </span>
-                <h3>Order Total : <span id="discountTotal">0 Rs.</span></h3>
-                <h4>Click here to Checkout ↓</h4>
 
 
-                <div id="buyAll"> <a id="checkOut" href="./address.html" style="color: white; text-decoration: none
-                ;"> Checkout</a></div>
-            </div>
+        <!--  append alll address here -->
+
+        <div id="container">
+            <h2>Add New Delivery Addresses</h2>
+            <form id="address-form">
+
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname" required placeholder="fullname">
+
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" required placeholder="Address">
+
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" required placeholder="city">
+
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" required placeholder="state">
+
+                <label for="Pincode">Pin Code</label>
+                <input type="text" id="Pincode" name="Pincode" required placeholder="pincode">
+
+                <label for="MobileNumber">Mobile Number</label>
+                <input type="text" id="MobileNumber" name="MobileNumber" required placeholder="10 digit mobile number">
+                <button type="submit">Add</button>
+            </form>
+
+
         </div>
 
-    </div>
 
+
+
+
+    </div>
 
 
 
@@ -449,202 +460,134 @@
 
     let logInStatus = document.getElementById('logInStatus')
 
-    let cartInfo = document.getElementById('cartInfo');
-
     if (token) {
         logInStatus.innerText = "Sign Out"
         logInStatus.href = "./index.html"
-        cartInfo.innerHTML = ""
+
         document.getElementById('storeLocator').innerText = "Hey! " + JSON.parse(localStorage.getItem("username"))
         document.getElementById('fa').innerHTML = ""
     }
     if (!token) {
         document.getElementById('warning').innerText = ""
-        document.getElementById('coupen').innerText = "Nothing to see !"
-        document.getElementById('bill').style.display = "none"
     }
 
     logInStatus.addEventListener("click", (e) => {
         localStorage.removeItem("token")
+        localStorage.removeItem("bill");
+        localStorage.removeItem("addressData")
+        localStorage.removeItem("address")
     })
 
 
-    //  finding individual array of cart
+    const form = document.getElementById('address-form');
 
-    window.addEventListener("load", (e) => {
-        e.preventDefault();
-        fetchProducts()
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const full_name = document.getElementById('fullname').value;
+        const full_address = document.getElementById('address').value;
+        const city = document.getElementById('city').value;
+        const state = document.getElementById('state').value;
+        const pin = document.getElementById('Pincode').value;
+        const mobile = document.getElementById('MobileNumber').value;
 
-    })
 
-    function fetchProducts() {
-        fetch(`${url}/cart`, {
-            method: "GET",
+        let obj = { full_name, full_address, city, state, pin, mobile }
+        console.log(token)
+        fetch(`${url}/address/add`, {
+            method: "POST",
             mode: "cors",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
-            }
+            },
+            body: JSON.stringify(obj)
         }).then((res) => {
             return res.json()
         }).then((data) => {
             console.log(data)
-            localStorage.setItem("cartItem", JSON.stringify(data))
-            showData(data)
         }).catch((err) => {
             console.log(err)
         })
-    }
+    });
 
 
-    let Total = document.getElementById("cartTotal");
-    let discountTotal = document.getElementById("discountTotal")
-    let discount = document.getElementById("discount")
-    let BuyBtn = document.getElementById("buyAll")
+    // function fetchProducts() {
+    fetch(`${url}/address`, {
+        method: "GET",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        }
+
+    }).then((res) => {
+        return res.json()
+    }).then((data) => {
+        console.log(data)
+        localStorage.setItem("addressData", JSON.stringify(data))
+        showAddress(data)
+    }).catch((err) => {
+        console.log(err)
+    })
+
+    // }
+
+    let savedAddressContainer = document.getElementById('savedAddressContainer')
 
 
 
-    let productContainer = document.getElementById('productContainer');
-
-
-    function showData(data) {
-        let product_list = `<div class="product-list" >
+    function showAddress(data) {
+        let address_list = `<div class="product-list">
+               <h1>Saved Address</h1>
                         ${data.map((item) =>
-            productMaker(item.title, item.image, item.category, item.gender, item.price, item.rating, item.rating_count, item._id)
+            formMaker(item.full_name, item.full_address, item.city, item.state, item.pin, item.mobile, item._id)
         ).join("")}
 
         </div>`
 
-        productContainer.innerHTML = product_list;
+        savedAddressContainer.innerHTML = address_list;
     }
 
-    let totalAmount = 0
-    let totalItem = 0
-    function productMaker(title, image, category, gender, price, rating, rating_count, itemID) {
-        let off = Math.floor((price - 1000) / price * 100)
-        let star = ""
-        totalAmount += price;
-        totalItem++;
+    function formMaker(fullname, fulladdress, city, state, pin, mobile, itemID) {
+        let card = `
 
+            <div id="address-form1> 
+                <label for="fullname">Full Name</label> <br>
+                <input type="text" id="fullname1" name="fullname" required value=${fullname}> <br>
 
-        for (let i = 1; i <= rating; i++) {
-            star += `<span class="fa fa-star checked"></span>`
-        }
-        for (let i = 1; i <= (5 - rating); i++) {
-            star += `<span class="fa fa-star"></span>`
-        }
+                <label for="address">Address</label><br>
+                <input type="text" id="address1" name="address" required value=${fulladdress}> <br>
 
-        let product = `<div class=product id="product" ')>
+                <label for="city">City</label><br>
+                <input type="text" id="city1" name="city" required value=${city}><br>
 
-                    <div> <img class="product_img" src=${image} alt=""></div>
+                <label for="state">State</label><br>
+                <input type="text" id="state1" name="state" required value=${state}><br>
 
-                <div>
-                    <h4 class="title">${title}</h4>
-                    <p class="category"> Category : ${category}</p>
-                    <p class="gender">Gender : ${gender}</p>
-                     <p class="items">Gender : 1</p>
+                <label for="Pincode">Pin Code</label><br>
+                <input type="text" id="Pincode1" name="Pincode" required value=${pin}><br>
 
-                </div>
+                <label for="MobileNumber">Mobile Number</label><br>
+                <input type="text" id="MobileNumber1" name="MobileNumber" required value=${mobile}> <br>
+                <button  id="editBtn" >Edit</button>
+                <button  id="deleteBtn" >Delete</button>
+                <button onclick=useAddress('${itemID}') id="useBtn" >Use Address</button>
+                
+            </div>`
 
-                    <div style="text-align:center; margin:auto">
-                        <button class="decrease" style="font-size:30px">-</button>
-                        <p class="quantity"> 1 </p>
-                        <button class=increase" style="font-size:30px"  onclick=increaseQuant('${itemID}')>+</button>
-                        
-                    </div>
-                            
-                            <div style="text-align:center; margin:auto">
-                            <button class="deleteItem" id="deleteItem" onclick=deleteItem('${itemID}')><i class="material-icons">&#xe872;</i></button>
-        
-                        </div>
-                                <div style="text-align:center; margin:auto; margin-left:15%">
-                                    <p class="price">Price : ${price} ₹</p>
-
-                                    </div>
-                        </div>`
-
-        Total.innerText = totalAmount + "₹"
-        if (totalAmount >= 35000) {
-            discountTotal.innerText = Math.floor(totalAmount * .80) + "₹"
-            localStorage.setItem("bill", JSON.stringify(Math.floor(totalAmount * 0.80)))
-            discount.innerText = `Buy${totalItem}@20%Off: ${totalAmount - Math.floor(totalAmount * 0.80)}`
-
-        }
-        else {
-            discountTotal.innerText = totalAmount + "₹"
-            localStorage.setItem("bill", JSON.stringify(totalAmount))
-        }
-
-        return product;
+        return card;
     }
 
-    //  quantity data ;
 
-    function increaseQuant(itemID) {
-
-
-        for (let i = 0; i < data.length; i++) {
-            if (data[i]._id == itemID) {
-                if (!data[i].quantity) {
-                    data[i].quantity = 1;
-                }
-                else if (data[i].quantity) {
-
-                }
-
-
+    function useAddress(itemID) {
+        let addressData = JSON.parse(localStorage.getItem("addressData"))
+        let data = addressData.filter((item) => {
+            if (item._id == itemID) {
+                localStorage.setItem("address", JSON.stringify(item))
+                window.location = "./checkout.html"
             }
-
-
-        }
-    }
-
-
-
-
-    //  function delete item
-
-    function deleteItem(ID) {
-
-        if (!token) {
-            alert("please login / register first to add in cart")
-            return;
-        }
-
-        fetch(`${url}/cart/remove/${ID}`, {
-            method: "PATCH",
-            mode: "cors",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            }
-        }).then((res) => {
-            return res.json()
-        }).then((data) => {
-            console.log(data)
-            alert(data.message)
-            fetchProducts()
-        }).catch((err) => {
-            console.log(err)
         })
-        event.stopPropagation()
     }
-
-    let checkOut = document.getElementById('checkOut')
-
-    checkOut.addEventListener("click", (e) => {
-        e.preventDefault();
-        let data = JSON.parse(localStorage.getItem("cartItem"))
-        if (data.length == 0) {
-            checkOut.href = ""
-            alert("Please add something in cart to checkout !")
-        }
-        else {
-            window.location = './checkout.html'
-        }
-
-    })
-
 
 </script>
 

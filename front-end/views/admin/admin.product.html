@@ -5,61 +5,960 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
     <title>Document</title>
+
+    <style>
+        * {
+            font-family: 'Montserrat';
+        }
+
+        .login_nav {
+            width: 100%;
+            height: 45px;
+            margin: auto;
+            padding: auto;
+            background-color: #F3F3F3;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+
+        }
+
+        .login_nav div {
+            width: 35%;
+            padding-right: 1%;
+            color: #37474F;
+            display: flex;
+            justify-content: space-evenly;
+            font-size: 15px;
+            ;
+        }
+
+        .login_nav div a {
+            text-decoration: none;
+            color: #37474F;
+        }
+
+
+        /*  Main nav bar */
+        .main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* margin-bottom: -1%; */
+        }
+
+        .main img {
+            width: 10%;
+        }
+
+        .main div {
+            display: flex;
+            align-items: center;
+        }
+
+        .main a {
+            margin-left: 1%;
+            margin-right: 1%;
+            text-decoration: none;
+            color: #37474F;
+        }
+
+        .main a:hover {
+            margin-left: 1%;
+            margin-right: 1%;
+            font-weight: bold;
+            color: #263238;
+        }
+
+        .cart div:nth-child(1) {
+            /* border: 1px solid #1976D2; */
+            width: 50%;
+            height: 75px;
+
+        }
+
+        .cart div:nth-child(2) {
+            background-color: #1976D2;
+            color: white;
+            width: 50%;
+            height: 75px;
+        }
+
+
+        /*  search bar */
+
+        #search_bar {
+            display: flex;
+            margin: auto;
+        }
+
+        #search_bar select,
+        span,
+        input,
+        button {
+            margin-left: 2%;
+            padding: .5%;
+        }
+
+        #search_bar select {
+            width: 150px;
+            font-size: 18px;
+        }
+
+        #search_bar input {
+            width: 300px;
+            font-size: 18px;
+        }
+
+        #search_bar button {
+            width: 100px;
+            font-size: 18px;
+        }
+
+
+        #sort option {
+            font-size: 18px;
+            background-color: #dcdcdc;
+            padding-left: 5px;
+            ;
+        }
+
+
+
+
+
+
+        /* footer */
+
+        .about_section {
+            width: 100%;
+            margin-top: 20%;
+            padding: 2%;
+            display: grid;
+            grid-template-columns: repeat(4, 25%);
+
+        }
+
+        .about_section div a {
+            display: block;
+        }
+
+        .about_section div a {
+            color: #37474F;
+            text-decoration: none;
+            /* margin: 2% 2% !important; */
+            margin-bottom: 3%;
+
+        }
+
+        footer {
+            margin: auto;
+            display: flex;
+            background-color: #333;
+            color: white;
+            padding-top: 2%;
+            padding-left: 2%;
+            font-size: 12px;
+            padding-bottom: 10%;
+        }
+
+        ul.no-bullets {
+            display: flex;
+            list-style-type: none;
+            margin-right: 20%;
+        }
+
+        ul.no-bullets li {
+            padding-right: 5%;
+        }
+
+
+        footer div img {
+            width: 80px;
+            height: 50px;
+            padding-top: 4%;
+            margin-right: 5%;
+        }
+
+
+        /* =================================== */
+        .modal {
+            display: none;
+            position: absolute;
+            z-index: 1;
+            margin-top: 30px;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: scroll;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content:hover {
+            box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+        }
+
+        /* Modal Content */
+        .modal-content {
+            width: 30%;
+            background-color: #fefefe;
+            margin: auto;
+            margin-bottom: 20%;
+            padding: 20px;
+            border: 1px solid #888;
+            color: #263238;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        }
+
+
+        /* The Close Button */
+        #close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        #close:hover,
+        #close:focus {
+            color: red;
+            text-decoration: bold;
+            font-size: 35px;
+            font-weight: bolder;
+            cursor: pointer;
+        }
+
+        .editform input {
+            width: 90%;
+        }
+
+
+        /* modal  */
+
+        /*  Update modal  update */
+        .modalUpdate {
+            display: none;
+            position: absolute;
+            z-index: 1;
+            margin-top: 30px;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: scroll;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content-Update:hover {
+            box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+        }
+
+        .modal-content-Update {
+            width: 30%;
+            background-color: #fefefe;
+            margin: auto;
+            margin-bottom: 20%;
+            padding: 20px;
+            border: 1px solid #888;
+            color: #263238;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        }
+
+        #closeUpdate {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        #closeUpdate:hover,
+        #closeUpdate:focus {
+            color: red;
+            text-decoration: bold;
+            font-size: 35px;
+            font-weight: bolder;
+            cursor: pointer;
+        }
+
+
+        #editformUpdate input {
+            width: 90%;
+        }
+
+
+
+
+        /*  container containing filatation and product */
+
+        #container {
+            width: 100%;
+            margin: auto;
+            border: 1px solid black;
+            display: flex;
+            /* padding-bottom: 100%; */
+
+        }
+
+        /*   filter contaniner */
+
+
+
+        #Gender span {
+            background-color: grey;
+        }
+
+        #Gender div {
+            width: 100%;
+            border: 1px solid pink;
+            background-color: yellow;
+
+        }
+
+        /*  filter */
+
+
+        .filter-div {
+            width: 22%;
+            margin-right: 2%;
+            margin-left: 2%;
+            font-size: 16px;
+
+        }
+
+
+        #refine,
+        #price,
+        #category,
+        #rating,
+        #material,
+        #style,
+        #gender {
+
+            background-color: #dcdcdc;
+            padding: 1px;
+            /* margin-left: 3%; */
+
+        }
+
+        .priceInp,
+        .categoryInp,
+        .materialInp,
+        .ratingInp,
+        .genderInp,
+        .styleInp p {
+            margin-left: 3%;
+        }
+
+        #refine {
+            background-color: #90A4AE;
+        }
+
+        .checked {
+            color: #C33764;
+        }
+
+
+
+        /*  Product container */
+
+        #productContainer {
+            width: 85%;
+
+
+        }
+
+        .product-list {
+            width: 100%;
+
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 30%);
+            column-gap: 3%;
+            row-gap: 1%;
+            padding: auto;
+            /* box-sizing: border-box; */
+
+            overflow-y: scroll;
+            padding-bottom: 20%;
+        }
+
+        .product {
+            width: 100%;
+            margin: auto;
+            padding: 3%;
+            padding-bottom: 18%;
+            border-radius: 1%;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+
+        }
+
+        .product:hover {
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+        }
+
+        .product_img {
+            width: 100%;
+            margin: auto;
+            /* border: 1px solid teal; */
+        }
+
+        .off {
+            position: relative;
+            margin-left: 70%;
+            margin-top: 5px;
+            margin-bottom: -25px;
+            color: #C33764
+        }
+
+
+
+        #editBtn {
+            width: 40%;
+            height: 40px;
+            margin-left: 5%;
+            background-color: #1976D2;
+            border-radius: 5px;
+            border: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* delete  btn */
+        #deleteBtn {
+            width: 40%;
+            height: 40px;
+            margin-left: 5%;
+            background-color: #1976D2;
+            border-radius: 5px;
+            border: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /*  add btn */
+
+        #add,
+        #update {
+            width: 40%;
+            height: 40px;
+            margin-left: 28%;
+            margin-top: 2%;
+            background-color: #1976D2;
+            border-radius: 5px;
+            border: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+    </style>
 </head>
 
 <body>
 
-    <form action="">
-        <span>Title</span> <br>
-        <input type="text"> <br>
+    <nav class="login_nav">
+        <div>
+            <i style="font-size:20px; color:#455A64; margin-right: -10px;" class="fa">&#xf0d1;</i>
+            <a href="">Track Order</a>
+            <i style="font-size:20px; color:#455A64; margin-right: -10px;" class="fa">&#xf041;</i>
+            <a href="">Store Locator</a>
+            <i class="fa fa-user" style="font-size:20px; color:#455A64; margin-right: -10px;"></i>
+            <a href="../views/signin.html">Log In / Register</a>
+        </div>
 
-        <span>Gender</span> <br>
-        <input type="text"> <br>
+    </nav>
+    <p></p>
+    <!--  Main navbar -->
 
-        <span>Category</span> <br>
-        <input type="text"> <br>
+    <nav class="main">
+        <div>
+            <img src="/front-end//images//gifmaker_me (1).gif" alt="">
+            <a href="./admin.product.html">Homepage</a>
+            <a href="#" id="addProduct">Add Product</a>
+            <a href="./orders.html">Orders</a>
+            <a href="">Sale</a>
+            <a href="">Active Customers</a>
+            <a href="">Sale</a>
+            <a href="./users.html">Users</a>
+        </div>
 
-        <span>Style</span> <br>
-        <input type="text"> <br>
+        <div class="cart">
+            <div>
+                <i style="font-size:35px ;" class="fa fa-search"></i>
+            </div>
+            <div>
+                <i style="font-size:35px" class="fa">&#xf07a;</i>
 
-        <span>Material</span> <br>
-        <input type="text"> <br>
+            </div>
+        </div>
+    </nav>
+    <hr>
 
-        <span>Rating</span> <br>
-        <input type="number" min="0" max="5"> <br>
+    <!--  search bar   -->
+    <div id="search_bar">
+        <span style="margin-left: 5%; font-weight: bold;">Search By : </span>
+        <select name="search" id="search">
+            <option value="material">Material</option>
+            <option value="gender">Gender</option>
+            <option value="category">Category</option>
+        </select>
 
-        <span>Rating Count</span> <br>
-        <input type="number" min="0"> <br>
+        <input type="text" id="search_box" placeholder="write something here . . .">
+        <button id="search_button">search</button>
 
-        <span>Price</span> <br>
-        <input type="number" min="0"> <br>
+        <span style="margin-left: 5%; font-weight: bold;">Sort By : </span>
+        <select name="sort" id="sort" style="width:250px; height: 40px; font-weight: bold;">
+            <option value="">relevance</option>
+            <option value="priceLowToHigh">Price (Low to High)</option>
+            <option value="priceHighToLow">Price (High to Low)</option>
+            <option value="date">Newest to Oldest </option>
+        </select>
 
-        <span>Image Link</span> <br>
-        <input type="text"> <br>
+    </div>
+    <hr>
+
+    <!--  modal  -->
+
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" id="close">&times;</span>
+
+            <div class="editform" id="editform">
+                <form action="">
+                    <span>Title :</span>
+                    <input type="text"> <br>
+
+                    <span>Gender : </span>
+                    <input type="text"> <br>
+
+                    <span>Category :</span>
+                    <input type="text"> <br>
+
+                    <span>Style :</span> <br>
+                    <input type="text"> <br>
+
+                    <span>Material :</span>
+                    <input type="text"> <br>
+
+                    <span>Rating :</span> <br>
+                    <input type="number" min="0" max="5"> <br>
+
+                    <span>Rating Count :</span> <br>
+                    <input type="number" min="0"> <br>
+
+                    <span>Price :</span> <br>
+                    <input type="number" min="0"> <br>
+
+                    <span>Image Link :</span> <br>
+                    <input type="text"> <br>
 
 
-        <span>Total Quantity</span> <br>
-        <input type="number" min="0"> <br>
+                    <span>Total Quantity :</span> <br>
+                    <input type="number" min="0"> <br>
 
-        <span>Descripttion</span> <br>
-        <input type="text"> <br>
+                    <span>Descripttion :</span> <br>
+                    <input type="text"> <br>
 
-        <span>Arival</span> <br>
-        <input type="date"> <br>
+                    <span>Arival :</span> <br>
+                    <input type="date"> <br>
 
-        <input type="Submit" placeholder="Submit"> <br>
+                    <!-- <input type="Submit"  placeholder="Update Item"> <br> -->
+                    <button class="add" id="add">Add Product</button>
 
-    </form>
+
+                </form>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--  modal  -->
+
+    <!--   edit modal  -->
+
+    <div id="myModalUpdate" class="modalUpdate">
+
+        <!-- Modal content -->
+        <div class="modal-content-Update">
+            <span id="closeUpdate"> &times;</span>
+
+            <div class="editformUpdate" id="editformUpdate">
+                <form action="" id="updateForm">
+                    <span>Title :</span>
+                    <input type="text"> <br>
+
+                    <span>Gender : </span>
+                    <input type="text"> <br>
+
+                    <span>Category :</span>
+                    <input type="text"> <br>
+
+                    <span>Style :</span> <br>
+                    <input type="text"> <br>
+
+                    <span>Material :</span>
+                    <input type="text"> <br>
+
+                    <span>Rating :</span> <br>
+                    <input type="number" min="0" max="5"> <br>
+
+                    <span>Rating Count :</span> <br>
+                    <input type="number" min="0"> <br>
+
+                    <span>Price :</span> <br>
+                    <input type="number" min="0"> <br>
+
+                    <span>Image Link :</span> <br>
+                    <input type="text"> <br>
+
+
+                    <span>Total Quantity :</span> <br>
+                    <input type="number" min="0"> <br>
+
+                    <span>Descripttion :</span> <br>
+                    <input type="text"> <br>
+
+                    <span>Arival :</span> <br>
+                    <input type="date"> <br>
+
+                    <!-- <input type="Submit"  placeholder="Update Item"> <br> -->
+                    <button class="update" id="update">Update</button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!--  add product -->
+
+
+
+    <!--  container -->
+
+    <div id="container">
+
+
+        <div class="filter-div">
+
+            <div id="refine">
+                <p>:: REFINE BY</p>
+            </div>
+
+            <div id="gender">
+                <p>: GENDER</p>
+            </div>
+
+            <div class="genderInp">
+                <p><input type="checkbox" value="All">All</p>
+                <p><input type="checkbox" value="Male">Men</p>
+                <p><input type="checkbox" value="Female">Women</p>
+
+            </div>
+
+
+            <div id="category">
+                <p>: CATEGORY</p>
+            </div>
+            <div class="categoryInp">
+                <p><input type="checkbox" value="Formal">Formal</p>
+                <p><input type="checkbox" value="Casual">Casual</p>
+                <p><input type="checkbox" value="Sport">Sports</p>
+
+            </div>
+
+
+
+
+            <div id="style">
+                <p>: STYLE</p>
+            </div>
+
+            <div class="styleInp">
+                <p><input type="checkbox" value="Shoe">Shoes</p>
+                <p><input type="checkbox" value="Sandals">Sandals</p>
+                <p><input type="checkbox" value="Boot">Boots</p>
+            </div>
+
+
+
+            <div id="material">
+                <p>: MATERIAL</p>
+            </div>
+
+            <div class="materialInp">
+                <p><input type="checkbox" value="Leather">Leather</p>
+                <p><input type="checkbox" value="Nubuck">Nubuck</p>
+                <p><input type="checkbox" value="Textile">Textile</p>
+                <p><input type="checkbox" value="Suede">Suede</p>
+                <p><input type="checkbox" value="Synthetic">Synthetic</p>
+            </div>
+
+
+
+            <div id="price">
+                <p>: PRICE</p>
+            </div>
+
+            <div class="priceInp">
+                <p><input type="checkbox" value="5000">Between 5000 to 6500 Rs.</p>
+                <p><input type="checkbox" value="6500">Between 6500 to 8000 Rs.</p>
+                <p><input type="checkbox" value="8000">Between 8000 to 9500 Rs.</p>
+                <p><input type="checkbox" value="9500">Between 9500 to 11000 Rs.</p>
+                <p><input type="checkbox" value="11000">Above 11000 Rs.</p>
+            </div>
+
+
+
+
+            <div id="rating">
+                <p>: RATING</p>
+            </div>
+
+            <div class="ratingInp">
+                <p><input type="checkbox" value="3"><i class="fa fa-star checked"></i><i
+                        class="fa fa-star checked"></i><i class="fa fa-star checked"></i><i class="fa fa-star"></i><i
+                        class="fa fa-star"></i></p>
+                <p><input type="checkbox" value="4"><i class="fa fa-star checked"></i><i
+                        class="fa fa-star checked"></i><i class="fa fa-star checked"><i class="fa fa-star checked"></i>
+                    </i><i class="fa fa-star"></i></p>
+                <p><input type="checkbox" value="5"><i class="fa fa-star checked"></i><i
+                        class="fa fa-star checked"></i><i class="fa fa-star checked"><i
+                            class="fa fa-star checked"></i><i class="fa fa-star checked"></i>
+                    </i></p>
+            </div>
+
+
+        </div>
+
+        <div id="productContainer">
+            <h3 id="warning">loading . . .</h3>
+
+        </div>
+
+
+    </div>
+
+
+
+    </div>
+
+
+    <!-- footer -->
+    <div class="about_section">
+        <div>
+            <hr>
+            <h4>DEPARTMENTS</h4>
+            <hr>
+            <a href="">Womens</a>
+            <a href="">Mens</a>
+            <a href="">Originals</a>
+            <a href="">Kids</a>
+            <a href="">Styles & Stories</a>
+            <a href="">Sale</a>
+            <a href="">Blog</a>
+
+        </div>
+
+
+        <div>
+            <hr>
+            <h4>HELPS</h4>
+            <hr>
+            <a href="">Product Recall</a>
+            <a href="">Customer Service</a>
+            <a href="">Shipping & Delivery</a>
+            <a href="">Order Lookup</a>
+            <a href="">Returns</a>
+            <a href="">Compare At Pricing</a>
+            <a href="">FAQs</a>
+            <a href="">ID.ME FAQs</a>
+            <a href="">Accessability</a>
+
+
+        </div>
+
+        <div>
+            <hr>
+            <h4>ABOUT SHOEMPIRE</h4>
+            <hr>
+            <a href="">About Us</a>
+            <a href="">Affilate Program</a>
+            <a href="">Carrer</a>
+            <a href="">California- Do Not Sell my Info</a>
+            <a href="">California Supply Chains Act</a>
+            <a href="">Corprative Resposibility</a>
+            <a href="">Technologies</a>
+            <a href="">Cookie Policy</a>
+
+        </div>
+
+        <div>
+            <hr>
+            <h4>SHOEMPIRE.COM</h4>
+            <hr>
+            <a href="">Gift Cards</a>
+            <a href="">Gift card Balance</a>
+            <a href="">Size Guide</a>
+            <a href="">Shoe Care Guide</a>
+
+        </div>
+
+
+
+    </div>
+
+
+
+    <footer>
+
+
+        <ul class="no-bullets">
+            <li>Terms and Conditions</li>
+            <li>Privacy Policy</li>
+            <li>CCPA Privacy Policy</li>
+
+        </ul>
+        <div>
+            <p>© C&J SHOEMPIRE International 2023. Clarks and the Clarks logo are registered trademarks of C&J SHOEMPIRE
+                International Limited.</p>
+            <p>C & J SHOEMPIRE America, Inc., 140 Kendrick Street, Needham, MA 02494</p>
+
+            <img src="/front-end//images//discover.png" alt="">
+            <img src="/front-end//images//paypal.png" alt="">
+            <img src="/front-end//images//Klarna.png" alt="">
+            <img src="/front-end//images//mastercard.png" alt="">
+
+            <img src="/front-end//images/visa.png" alt="">
+
+        </div>
+
+
+    </footer>
+
 
 </body>
 
 <script>
     let url = "http://localhost:8080"
 
+    let token = JSON.parse(localStorage.getItem('token'))
+
+    //  modal add
+    let addProduct = document.getElementById('addProduct'); // anchor tag
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("myBtn");
+    // var span = document.getElementsByClassName("close")[0];
+    let span = document.getElementById("close")
+
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    addProduct.addEventListener("click", () => {
+        modal.style.display = "block";
+        //  show model
+    })
+
+
+
+
+
+    //  fetching all data here
+    window.addEventListener("load", (e) => {
+        e.preventDefault();
+        fetchProducts()
+
+    })
+
+    function fetchProducts() {
+        fetch(`${url}/products`)
+            .then((res) => {
+                return res.json();
+            }).then((data) => {
+                showData(data)
+                filterData(data)
+
+            }).catch((err) => {
+                console.log(err)
+            })
+    }
+
+    let productContainer = document.getElementById('productContainer');
+
+
+    function showData(data) {
+        let product_list = `<div class="product-list" >
+                        ${data.map((item) =>
+            productMaker(item.title, item.image, item.category, item.gender, item.price, item.rating, item.rating_count, item._id)
+        ).join("")}
+
+        </div>`
+
+        productContainer.innerHTML = product_list;
+    }
+
+    function productMaker(title, image, category, gender, price, rating, rating_count, itemID) {
+        let off = Math.floor((price - 1000) / price * 100)
+        let star = ""
+
+        for (let i = 1; i <= rating; i++) {
+            star += `<span class="fa fa-star checked"></span>`
+        }
+        for (let i = 1; i <= (5 - rating); i++) {
+            star += `<span class="fa fa-star"></span>`
+        }
+
+        let product = `<div class=product onclick=productDetails('${itemID}')>
+            <span class="off">${100 - off} % off</span>
+        <img class="product_img" src=${image} alt="">
+        <h4 class="title">${title}</h4>
+        <p class="category"> Category : ${category}</p>
+
+        <p class="gender">Gender : ${gender}</p>
+        <p class="price">Price : ${price} ₹</p>
+        <p class="rating">Rating : ${star}</p>
+   
+        <p class="rating_count">Review : ${rating_count}</p>
+        <button class="editBtn" id="editBtn" onclick=editItem('${itemID}')>Edit</button>
+         <button class="deleteBtn" id="deleteBtn" onclick=deleteItem('${itemID}')>Delete</button>
+            
+    
+    </div>`
+        return product;
+    }
+
+
+    //  add data
+    let addBtn = document.getElementById('add');
     let form = document.querySelector("form")
 
-    form.addEventListener("submit", (e) => {
+    addBtn.addEventListener("click", (e) => {
         e.preventDefault();
         let title = form[0].value;
         let gender = form[1].value;
@@ -81,8 +980,8 @@
         }
 
         let obj = { title, gender, category, style, rating, material, rating_count, price, image, item_left, description, arival }
-
-        fetch(`${url}/products`, {
+        console.log(obj)
+        fetch(`${url}/products/admin/add`, {
             method: "POST",
             mode: 'cors',
             headers: {
@@ -92,13 +991,401 @@
         }).then((res) => {
             return res.json();
         }).then((data) => {
-
             alert(`${data.message}`)
             form.reset();
         }).catch((err) => {
             console.log(err)
         })
     })
+
+
+
+
+
+    //  Update a product product
+    var modalUpdate = document.getElementById("myModalUpdate");
+    var spanUpdate = document.getElementById('closeUpdate')
+
+    spanUpdate.onclick = function () {
+        modalUpdate.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modalUpdate) {
+            modalUpdate.style.display = "none";
+        }
+    }
+    //  edit item
+    function editItem(ID) {
+        modalUpdate.style.display = "block";
+        if (!token) {
+            alert("please login / register first to add in cart")
+            return;
+        }
+        fetch(`${url}/products/admin/${ID}`, {
+            method: "GET",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        }).then((res) => {
+            return res.json()
+        }).then((data) => {
+            showUpdateData(data, data._id)
+        }).catch((err) => {
+            console.log(err)
+        })
+
+    }
+
+    //  showing data in update Form 
+    function showUpdateData(data, ID) {
+        let form = document.getElementById('updateForm')
+        form[0].value = data.title
+        form[1].value = data.gender
+        form[2].value = data.category
+        form[3].value = data.style
+        form[4].value = data.material
+        form[5].value = data.rating
+        form[6].value = data.rating_count
+        form[7].value = data.price
+        form[8].value = data.image
+        form[9].value = data.item_left
+        form[10].value = data.description
+        form[11].value = data.arival
+
+        let updateBtn = document.getElementById("update");
+
+        updateBtn.addEventListener("click", (e) => {
+
+            e.preventDefault()
+            let form = document.getElementById('updateForm')
+
+            let title = form[0].value;
+            let gender = form[1].value;
+            let category = form[2].value;
+            let style = form[3].value;
+            let material = form[4].value
+            let rating = +form[5].value;
+            let rating_count = +form[6].value
+            let price = +form[7].value;
+            let image = form[8].value;
+
+            let item_left = +form[9].value;
+            let description = form[10].value
+            let arival = form[11].value
+
+            let obj = { title, gender, category, style, rating, material, rating_count, price, image, item_left, description, arival }
+            fetch(`${url}/products/admin/${ID}`, {
+                method: "PATCH",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(obj)
+            }).then((res) => {
+                return res.json()
+            }).then((data) => {
+                console.log(data)
+                alert(data.message)
+                modalUpdate.style.display = "none";
+                fetchProducts()
+            }).catch((err) => {
+                console.log(err)
+            })
+        })
+        event.stopPropagation()
+    }
+
+    //  delete item
+    function deleteItem(ID) {
+        if (!token) {
+            alert("please login / register first to add in cart")
+            return;
+        }
+        fetch(`${url}/products/admin/${ID}`, {
+            method: "DELETE",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        }).then((res) => {
+            return res.json()
+        }).then((data) => {
+            console.log(data)
+            alert(data.message)
+            fetchProducts()
+        }).catch((err) => {
+            console.log(err)
+        })
+
+    }
+
+    //   get the individual product for description 
+    function productDetails(id) {
+        console.log(id)
+        fetch(`${url}/products/${id}`)
+            .then((res) => {
+                return res.json();
+            }).then((data) => {
+                console.log(data)
+            }).catch((err) => {
+                console.log(err)
+            })
+    }
+
+    //  filter and sort function -------->>>>>>>>>>>>>
+    let Gender = document.querySelectorAll(".genderInp input")
+    let Rating = document.querySelectorAll(".ratingInp input")
+    let Price = document.querySelectorAll(".priceInp input")
+    let Material = document.querySelectorAll(".materialInp input")
+    let Style = document.querySelectorAll(".styleInp input")
+    let Category = document.querySelectorAll(".categoryInp input")
+
+    function filterData(product) {
+        for (let i = 0; i < Gender.length; i++) {
+            Gender[i].checked = false
+
+            Gender[i].addEventListener("change", () => {
+
+                productContainer.innerHTML = ""
+                let genderData = product.filter((element) => {
+                    if (element.gender == Gender[i].value) {
+                        // console.log(element)
+                        return element
+                    }
+                })
+                showData(genderData)
+                if (Gender[i].value == "All") {
+                    showData(product)
+
+                }
+
+            })
+        }
+
+        for (let i = 0; i < Rating.length; i++) {
+
+            Rating[i].addEventListener("change", () => {
+                productContainer.innerHTML = ""
+                // if (Rating[i].value == 3) {
+                let raitngData = product.filter((element) => {
+                    if (element.rating == Rating[i].value) {
+                        return element
+                    }
+                })
+                showData(raitngData)
+
+            })
+        }
+
+
+        //  price filte 
+
+        for (let i = 0; i < Price.length; i++) {
+
+            Price[i].addEventListener("change", () => {
+                productContainer.innerHTML = ""
+                if (Price[i].value == 5000) {
+                    let lowPrice = product.filter((element) => {
+                        if (element.price >= 1000 && element.price < 6500) {
+                            return element
+                        }
+                    })
+                    showData(lowPrice)
+                }
+                else if (Price[i].value == 6500) {
+
+                    let mediumPrice = product.filter((element) => {
+                        if (element.price >= 6500 && element.price < 8000) {
+                            return element
+                        }
+                    })
+                    showData(mediumPrice)
+                }
+                else if (Price[i].value == 8000) {
+                    let highPrice = product.filter((element) => {
+                        if (element.price >= 8000 && element.price < 9500) {
+                            return element
+                        }
+                    })
+                    showData(highPrice)
+                }
+                else if (Price[i].value == 9500) {
+                    let highPrice = product.filter((element) => {
+                        if (element.price >= 9500 && element.price < 11000) {
+                            return element
+                        }
+                    })
+                    showData(highPrice)
+                }
+                else if (Price[i].value == 11000) {
+                    let highPrice = product.filter((element) => {
+                        if (element.price >= 11000) {
+                            return element
+                        }
+                    })
+                    showData(highPrice)
+                }
+
+            })
+        }
+
+        //  category inp
+
+        for (let i = 0; i < Category.length; i++) {
+
+            Category[i].addEventListener("change", () => {
+                productContainer.innerHTML = ""
+                let categoryData = product.filter((element) => {
+
+                    if (element.category == Category[i].value) {
+                        return element
+                    }
+                })
+                showData(categoryData)
+
+            })
+        }
+
+        //  filter by style
+        for (let i = 0; i < Style.length; i++) {
+
+            Style[i].addEventListener("change", () => {
+                productContainer.innerHTML = ""
+                let styleData = product.filter((element) => {
+
+                    if (element.style == Style[i].value) {
+                        return element
+                    }
+                })
+                showData(styleData)
+
+            })
+        }
+
+        //  filter by materials
+
+        for (let i = 0; i < Material.length; i++) {
+
+            Material[i].addEventListener("change", () => {
+                productContainer.innerHTML = ""
+                let styleData = product.filter((element) => {
+
+                    if (element.material == Material[i].value) {
+                        return element
+                    }
+                })
+                showData(styleData)
+
+            })
+        }
+
+
+        //  filter funtion Ends here
+
+
+        let sortBy = document.getElementById('sort');
+        sortBy.addEventListener("change", () => {
+            if (sortBy.value == "priceLowToHigh") {
+                let data = product.sort((a, b) => {
+                    return a.price - b.price
+                });
+                showData(data)
+            }
+            else if (sortBy.value == "priceHighToLow") {
+
+                let data = product.sort((a, b) => {
+                    return b.price - a.price
+                });
+                showData(data)
+            }
+
+        })
+
+
+    }
+
+    let sortBy = document.getElementById('sort');
+    sortBy.addEventListener("change", () => {
+
+        if (sortBy.value == "date") {
+            fetch(`${url}/products/?sort_arival=asc`)
+                .then((res) => {
+                    return res.json();
+                }).then((data) => {
+                    showData(data)
+                    filterData(data)
+                }).catch((err) => {
+                    console.log(err)
+                })
+        }
+
+
+    })
+
+    //  serarch functionality 
+
+    let searchBy = document.getElementById("search")
+    let searchBox = document.getElementById("search_box")
+    let searchBtn = document.getElementById("search_button")
+
+
+    searchBox.addEventListener("keypress", searchData)
+    searchBtn.addEventListener("click", searchData)
+
+    let timeOut;
+
+
+
+    let count = 0;
+
+    searchBox.addEventListener("input", function () {
+        count = searchBox.value.length;
+        console.log("Total count of characters:", count);
+    });
+
+
+    function searchData(event) {
+
+        if (event.key === "Enter") {
+            event.preventDefault();
+
+            searchBtn.click();
+            fetch(`${url}/products/?search=${searchBox.value}`)
+                .then((res) => {
+                    return res.json();
+                }).then((data) => {
+                    showData(data)
+                    filterData(data)
+                }).catch((err) => {
+                    // alert(`Nothing found. Please try something else !  `)
+                    console.log(err)
+                })
+        }
+        else {
+            clearTimeout(timeOut)
+            timeOut = setTimeout(function () {
+                fetch(`${url}/products/?search=${searchBox.value}`)
+                    .then((res) => {
+                        return res.json();
+                    }).then((data) => {
+                        showData(data)
+                        filterData(data)
+                    }).catch((err) => {
+                        // alert(`Nothing found. Please try something else !  `)
+                        console.log(err)
+                    })
+            }, 1000);
+        }
+
+    }
+
+
+
 
 </script>
 
