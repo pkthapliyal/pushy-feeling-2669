@@ -8,6 +8,7 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <title>Document</title>
 
     <style>
@@ -204,6 +205,62 @@
             padding-top: 4%;
             margin-right: 5%;
         }
+
+        /*toast */
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .toast {
+            position: fixed;
+            top: 70%;
+            right: 25px;
+            width: 375px;
+            background: #F3F3F3;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /*   gap: 20px; */
+            border-radius: 12px;
+            border-left: 3px solid red;
+            overflow: hidden;
+            transform: translateX(calc(100% + 25px));
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+            font-family: sans-serif;
+
+        }
+
+        .toast.active {
+            transform: translateX(0);
+        }
+
+        .toast i:first-child {
+            color: #1976D2;
+
+            font-size: 20px;
+        }
+
+        .toast-text {
+            margin: 0;
+            font-size: .8125rem;
+            text-transform: uppercase;
+        }
+
+        .toast i:last-child {
+            color: #ccc;
+            cursor: pointer;
+            transition: 350ms;
+        }
+
+        .toast i:last-child:hover {
+            color: #333;
+
+        }
     </style>
 </head>
 
@@ -233,13 +290,13 @@
     <nav class="main">
         <div>
             <img src="../images//gifmaker_me (1).gif" alt="">
-            <a href="">Woman</a>
-            <a href="">Men</a>
-            <a href="">Kids</a>
+            <a href="./product.html">Woman</a>
+            <a href="./product.html">Men</a>
+            <a href="./product.html">Kids</a>
             <a href="">Originals</a>
-            <a href="">Accessories</a>
+            <a href="">Accessoriess</a>
             <a href="">Sale</a>
-            <a href="">Sustainability</a>
+            <a href="./orders.html">Orders</a>
         </div>
 
         <div class="cart">
@@ -269,7 +326,7 @@
 
             <button id="submit"> LOG IN</button>
         </form>
-        <p>Don't have an account? <a href="./signin.html">CREATE AN ACCOUNT</a></p>
+        <p>Don't have an account? <a href="./signup.html">CREATE AN ACCOUNT</a></p>
 
     </div>
 
@@ -365,6 +422,17 @@
 
     </footer>
 
+    <div class="container">
+        <div class="toast" id="toast">
+            <i id="icon" class="fas fa-exclamation-circle"></i>
+            <p class="toast-text" id="message">Oops, Wrong email or password!</p>
+            <p> <a href="" id="linkNext"></a> </p>
+            <i class="fas fa-close" id="close"></i>
+        </div>
+
+        <button id="open">Open</button>
+    </div>
+
 
 
 
@@ -375,6 +443,20 @@
     let url = "http://localhost:8080"
 
     let token;
+
+
+    const openBtn = document.getElementById("open");
+    const toast = document.getElementById("toast");
+    const closeBtn = document.getElementById("close");
+    let icon = document.getElementById("icon")
+
+    let message = document.getElementById('message')
+    let linkNext = document.getElementById('linkNext')
+
+
+    closeBtn.addEventListener("click", () => {
+        toast.classList.remove("active");
+    })
 
     let form = document.querySelector('form');
 
@@ -387,9 +469,58 @@
         let obj = { email, password }
 
         if (!email || !password) {
-            alert("please fill all details !!")
+            // alert("please fill all details !!")
+            toast.classList.add("active");
+            message.innerText = "Please fill all the details !"
+            setTimeout(() => {
+                toast.classList.remove("active");
+            }, 5000)
             return
         }
+
+
+        if (email == "admin@gmail.com") {
+            fetch(`${url}/signin/admin`, {
+                method: "POST",
+                mode: "cors",
+                body: JSON.stringify(obj),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then((res) => {
+                return res.json();
+            }).then((data) => {
+
+                linkNext.href = "./product.html";
+                toast.style.borderLeft = "3px solid #1976D2"
+                icon.style.color = "#1976D2"
+                if (data.token) {
+                    message.innerText = "Admin Login Succcessfully"
+                    linkNext.href = "./product.html";
+                    linkNext.innerText = 'Visit product page'
+                    toast.classList.add("active");
+                    setTimeout(() => {
+                        toast.classList.remove("active");
+                        window.location = "./admin/admin.product.htmll"
+                    }, 5000)
+                    localStorage.setItem("token", JSON.stringify(data.token))
+                    localStorage.setItem("username", JSON.stringify(data.user))
+                    return;
+                }
+                // alert(`${data.message}`)
+                message.innerText = `${data.message}`
+                toast.classList.add("active");
+                setTimeout(() => {
+                    toast.classList.remove("active");
+                }, 5000)
+                return
+
+            }).catch((err) => {
+                console.log(err)
+            })
+            return
+        }
+
         fetch(`${url}/signin`, {
             method: "POST",
             mode: "cors",
@@ -402,15 +533,36 @@
         }).then((data) => {
 
             if (data.token) {
-                alert("Login Succcessfully")
+                toast.style.borderLeft = "3px solid #1976D2"
+                message.innerText = `Login successfully`
+                linkNext.href = "./product.html";
+                linkNext.innerText = 'redirecting to product page . . .'
+                toast.classList.add("active");
+                setTimeout(() => {
+                    toast.classList.remove("active");
+                    window.location = "./product.html"
+                }, 5000)
                 localStorage.setItem("username", JSON.stringify(data.username))
                 localStorage.setItem("token", JSON.stringify(data.token))
-                window.location = "./product.html"
+
                 return;
             }
-            alert(`${data.message}`)
+            toast.style.color = "3px solid #1976D2"
+            message.innerText = `${data.message}`
+            toast.classList.add("active");
+            setTimeout(() => {
+                toast.classList.remove("active");
+            }, 5000)
+            // console.log(data)
+            return
+            // alert(`${data.message}`)
         }).catch((err) => {
             console.log(err)
+            message.innerText = `${err.message}`
+            toast.classList.add("active");
+            setTimeout(() => {
+                toast.classList.remove("active");
+            }, 500)
         })
     })
 </script>

@@ -9,265 +9,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="./css//address.css">
     <title>Document</title>
     <style>
-        * {
-            font-family: 'Montserrat';
-        }
 
-        .login_nav {
-            width: 100%;
-            height: 45px;
-            margin: auto;
-            padding: auto;
-            background-color: #F3F3F3;
-            display: flex;
-            justify-content: end;
-            align-items: center;
-
-        }
-
-        .login_nav div {
-            width: 35%;
-            padding-right: 1%;
-            color: #37474F;
-            display: flex;
-            justify-content: space-evenly;
-            font-size: 15px;
-            ;
-        }
-
-        .login_nav div a {
-            text-decoration: none;
-            color: #37474F;
-        }
-
-
-        /*  Main nav bar */
-        .main {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            /* margin-bottom: -1%; */
-        }
-
-        .main img {
-            width: 10%;
-        }
-
-        .main div {
-            display: flex;
-            align-items: center;
-        }
-
-        .main a {
-            margin-left: 1%;
-            margin-right: 1%;
-            text-decoration: none;
-            color: #37474F;
-        }
-
-        .main a:hover {
-            margin-left: 1%;
-            margin-right: 1%;
-            font-weight: bold;
-            color: #263238;
-        }
-
-        .cart {
-            margin-right: 1%;
-            width: 20%;
-            height: 65px;
-            text-align: center;
-            margin: auto;
-        }
-
-        .cart div i {
-            margin: auto;
-        }
-
-        .cart div:nth-child(1) {
-            /* border: 1px solid #1976D2; */
-            width: 50%;
-            height: 75px;
-
-        }
-
-        .cart div:nth-child(2) {
-            background-color: #1976D2;
-            color: white;
-            width: 50%;
-            height: 75px;
-        }
-
-        /* adress container */
-        #addressContainer {
-            /* width: 40%; */
-            display: flex;
-
-        }
-
-        #savedAddressContainer {
-            width: 30%;
-        }
-
-        #savedAddressContainer div {
-            width: 90%;
-            margin: auto;
-            margin-bottom: 15%;
-            margin-bottom: 10%;
-            padding: 3%;
-            box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
-        }
-
-        #savedAddressContainer div input {
-            width: 95%;
-        }
-
-        #savedAddressContainer div button {
-            margin-top: 2%;
-            height: 30px;
-            width: 32%;
-            background-color: rgb(51, 51, 51);
-            color: white;
-            border-radius: 3px;
-            font-weight: bold;
-            border: none;
-        }
-
-
-        #container {
-            width: 32%;
-            margin: auto;
-            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-            padding: 30px;
-            margin-top: 30px;
-            margin-bottom: 30px;
-
-        }
-
-        h2 {
-            background-color: rgb(51, 51, 51);
-            color: white;
-            padding: 10px;
-
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            width: 400px;
-            margin-left: 20px;
-        }
-
-        label {
-            margin-top: 10px;
-            font-size: 16px;
-        }
-
-        input {
-            padding: 5px;
-            margin-top: 5px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-            padding-left: 3%;
-        }
-
-        button[type="submit"] {
-            background-color: #546E7A;
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 10px;
-        }
-
-        button[type="submit"]:hover {
-            background-color: #333;
-        }
-
-        /*  saved data */
-        /* #address-form1 {
-            margin-bottom: 10%;
-            border: 1px solid blue;
-            padding: 3%;
-            box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
-        } */
-
-
-
-        /* footer */
-
-        .about_section {
-            width: 100%;
-            margin: auto;
-            margin-top: 20%;
-            padding: 2%;
-            display: grid;
-            grid-template-columns: repeat(4, 25%);
-
-        }
-
-        .about_section div a {
-            display: block;
-        }
-
-        .about_section div a {
-            color: #37474F;
-            text-decoration: none;
-            /* margin: 2% 2% !important; */
-            margin-bottom: 3%;
-
-        }
-
-        footer {
-            margin: auto;
-            display: flex;
-            background-color: #333;
-            color: white;
-            padding-top: 2%;
-            padding-left: 2%;
-            font-size: 12px;
-            padding-bottom: 10%;
-        }
-
-        ul.no-bullets {
-            display: flex;
-            list-style-type: none;
-            margin-right: 20%;
-        }
-
-        ul.no-bullets li {
-            padding-right: 5%;
-        }
-
-
-        footer div img {
-            width: 80px;
-            height: 50px;
-            padding-top: 4%;
-            margin-right: 5%;
-        }
-
-
-        /*  back button */
-        #continueShop {
-            height: 30px;
-            color: white;
-            position: fixed;
-            text-decoration: none;
-            font-size: 20px;
-            padding: 5px;
-            margin-top: 1%;
-            background-color: #1976D2;
-            background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
-        }
-
-        /*  saved address container */
     </style>
 </head>
 
@@ -451,6 +198,18 @@
 
     </footer>
 
+
+    <div class="containerTo">
+        <div class="toast" id="toast">
+            <i id="icon" class="fas fa-exclamation-circle"></i>
+            <p class="toast-text" id="message">Oops, Wrong email or password!</p>
+            <p> <a href="" id="linkNext"></a> </p>
+            <i class="fas fa-close" id="close"></i>
+        </div>
+
+        <button id="open">Open</button>
+    </div>
+
 </body>
 
 <script>
@@ -459,6 +218,22 @@
     let token = JSON.parse(localStorage.getItem("token"))
 
     let logInStatus = document.getElementById('logInStatus')
+
+
+    //  alert
+    const openBtn = document.getElementById("open");
+    const toast = document.getElementById("toast");
+    const closeBtn = document.getElementById("close");
+    let icon = document.getElementById("icon")
+
+    let message = document.getElementById('message')
+    let linkNext = document.getElementById('linkNext')
+
+
+    closeBtn.addEventListener("click", () => {
+        toast.classList.remove("active");
+    })
+    // alert
 
     if (token) {
         logInStatus.innerText = "Sign Out"
@@ -504,7 +279,12 @@
         }).then((res) => {
             return res.json()
         }).then((data) => {
-            console.log(data)
+            toast.style.borderLeft = "3px solid #1976D2"
+            message.innerText = data.message
+            toast.classList.add("active");
+            setTimeout(() => {
+                toast.classList.remove("active");
+            }, 5000)
         }).catch((err) => {
             console.log(err)
         })
@@ -524,10 +304,26 @@
         return res.json()
     }).then((data) => {
         console.log(data)
+        console.log(data)
+        if (!data) {
+            message.innerText = "Please add an address to continue !"
+            toast.classList.add("active");
+            setTimeout(() => {
+                toast.classList.remove("active");
+            }, 5000)
+            return
+        }
         localStorage.setItem("addressData", JSON.stringify(data))
         showAddress(data)
     }).catch((err) => {
-        console.log(err)
+        if (JSON.stringify(err)) {
+            message.innerText = "Please add an address to continue !"
+            toast.classList.add("active");
+            setTimeout(() => {
+                toast.classList.remove("active");
+            }, 5000)
+        }
+
     })
 
     // }
@@ -578,13 +374,19 @@
         return card;
     }
 
-
     function useAddress(itemID) {
         let addressData = JSON.parse(localStorage.getItem("addressData"))
         let data = addressData.filter((item) => {
             if (item._id == itemID) {
                 localStorage.setItem("address", JSON.stringify(item))
-                window.location = "./checkout.html"
+
+                toast.style.borderLeft = "3px solid #1976D2"
+                message.innerText = "redirecting to payment . . ."
+                toast.classList.add("active");
+                setTimeout(() => {
+                    toast.classList.remove("active");
+                    window.location = "./checkout.html"
+                }, 2000)
             }
         })
     }

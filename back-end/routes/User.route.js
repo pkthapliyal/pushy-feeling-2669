@@ -8,7 +8,6 @@ const { UserModel } = require("../models/user.model");
 
 
 userRoute.get("/users", async (req, res) => {
-
     try {
         data = await UserModel.find()
         return res.status(200).send(data);
@@ -16,6 +15,7 @@ userRoute.get("/users", async (req, res) => {
         console.log(error)
     }
 })
+
 
 userRoute.post("/signup", async (req, res) => {
 
@@ -55,6 +55,26 @@ userRoute.post("/signin", async (req, res) => {
 
     })
 
+})
+
+userRoute.post("/signin/admin", async (req, res) => {
+    const { email, password } = req.body;
+    user = await UserModel.findOne({ email: email });
+    if (!user) {
+        return res.status(404).send({ "message": "Wrong credentials !" });
+    }
+    bcrypt.compare(password, user.password, async (err, result) => {
+        if (!result) {
+            return res.status(404).send({ "message": "Wrong password !" });
+        }
+        else if (err) {
+            return res.status(404).send({ "message": err.message });
+        }
+        let payload = { userID: user._id, email: user.email, }
+        let token = jwt.sign(payload, "secretKey");
+        res.status(200).send({ "token": token, "user": user.first_name })
+
+    })
 
 })
 

@@ -17,371 +17,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.0/jspdf.debug.js"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="./css//checkout.css">
     <title>Document</title>
     <style>
-        * {
-            font-family: 'Montserrat';
-        }
 
-        .login_nav {
-            width: 100%;
-            height: 45px;
-            margin: auto;
-            padding: auto;
-            background-color: #F3F3F3;
-            display: flex;
-            justify-content: end;
-            align-items: center;
-
-        }
-
-        .login_nav div {
-            width: 35%;
-            padding-right: 1%;
-            color: #37474F;
-            display: flex;
-            justify-content: space-evenly;
-            font-size: 15px;
-            ;
-        }
-
-        .login_nav div a {
-            text-decoration: none;
-            color: #37474F;
-        }
-
-
-        /*  Main nav bar */
-        .main {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            /* margin-bottom: -1%; */
-        }
-
-        .main img {
-            width: 10%;
-        }
-
-        .main div {
-            display: flex;
-            align-items: center;
-        }
-
-        .main a {
-            margin-left: 1%;
-            margin-right: 1%;
-            text-decoration: none;
-            color: #37474F;
-        }
-
-        .main a:hover {
-            margin-left: 1%;
-            margin-right: 1%;
-            font-weight: bold;
-            color: #263238;
-        }
-
-        .cart {
-            margin-right: 1%;
-            width: 20%;
-            height: 65px;
-            text-align: center;
-            margin: auto;
-        }
-
-        .cart div i {
-            margin: auto;
-        }
-
-        .cart div:nth-child(1) {
-            /* border: 1px solid #1976D2; */
-            width: 50%;
-            height: 75px;
-
-        }
-
-        .cart div:nth-child(2) {
-            background-color: #1976D2;
-            color: white;
-            width: 50%;
-            height: 75px;
-        }
-
-        /*  account details */
-
-        .row {
-            display: -ms-flexbox;
-            /* IE10 */
-            display: flex;
-            -ms-flex-wrap: wrap;
-            /* IE10 */
-            flex-wrap: wrap;
-            margin: 0 -16px;
-        }
-
-
-        .col-50 {
-            -ms-flex: 50%;
-            /* IE10 */
-            flex: 50%;
-        }
-
-        .col-75 {
-            -ms-flex: 75%;
-            /* IE10 */
-            flex: 75%;
-        }
-
-
-        .col-50,
-        .col-75 {
-            padding: 0 16px;
-        }
-
-        .container {
-            width: 35%;
-            margin: auto;
-            background-color: #f2f2f2;
-            padding: 5px 20px 15px 20px;
-            border: 1px solid lightgrey;
-            border-radius: 3px;
-        }
-
-        input[type=text] {
-            width: 95%;
-            margin-bottom: 20px;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-        }
-
-        label {
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .icon-container {
-            margin-bottom: 20px;
-            padding: 7px 0;
-            font-size: 24px;
-        }
-
-        .btn {
-            background-color: #04AA6D;
-            color: white;
-            padding: 12px;
-            margin: 10px 0;
-            border: none;
-            width: 100%;
-            border-radius: 3px;
-            cursor: pointer;
-            font-size: 17px;
-        }
-
-        .btn:hover {
-            background-color: #45a049;
-        }
-
-        a {
-            color: #2196F3;
-        }
-
-        hr {
-            border: 1px solid lightgrey;
-        }
-
-        span.price {
-            float: right;
-            color: grey;
-        }
-
-        @media (max-width: 800px) {
-            .row {
-                flex-direction: column-reverse;
-            }
-
-            .col-25 {
-                margin-bottom: 20px;
-            }
-        }
-
-
-
-
-        /* footer */
-
-        .about_section {
-            width: 100%;
-            margin: auto;
-            margin-top: 20%;
-            padding: 2%;
-            display: grid;
-            grid-template-columns: repeat(4, 25%);
-
-        }
-
-        .about_section div a {
-            display: block;
-        }
-
-        .about_section div a {
-            color: #37474F;
-            text-decoration: none;
-            /* margin: 2% 2% !important; */
-            margin-bottom: 3%;
-
-        }
-
-        footer {
-            margin: auto;
-            display: flex;
-            background-color: #333;
-            color: white;
-            padding-top: 2%;
-            padding-left: 2%;
-            font-size: 12px;
-            padding-bottom: 10%;
-        }
-
-        ul.no-bullets {
-            display: flex;
-            list-style-type: none;
-            margin-right: 20%;
-        }
-
-        ul.no-bullets li {
-            padding-right: 5%;
-        }
-
-
-        footer div img {
-            width: 80px;
-            height: 50px;
-            padding-top: 4%;
-            margin-right: 5%;
-        }
-
-
-        /*  back button */
-        #continueShop {
-            height: 30px;
-            color: white;
-            position: fixed;
-            text-decoration: none;
-            font-size: 20px;
-            padding: 5px;
-            margin-top: 1%;
-            background-color: #1976D2;
-            background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
-        }
-
-        /*  saved address container */
-
-
-        /*  invoice */
-        #invoice {
-            border: 1px solid teal;
-            width: 50%;
-            margin: auto;
-            margin-top: 130px;
-            padding: 5%;
-            box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-            font-size: 12pt !important;
-            line-height: 1.5;
-            padding: 50px;
-            max-width: 800px;
-            border: 1px solid black;
-            /* box-sizing: border-box; */
-        }
-
-        table {
-            /* width: 100%; */
-            box-sizing: border-box;
-        }
-
-        table,
-        th,
-        td {
-
-            border: 1px solid black;
-            border-collapse: collapse;
-            padding: 8px;
-        }
-
-        #billBar {
-            display: flex;
-            width: 100%;
-
-        }
-
-        .image {
-            width: 30%;
-        }
-
-        p,
-        h3,
-        h4 {
-            padding: 3px;
-            margin: 0px;
-        }
-
-
-
-        /*  back to shopping */
-
-
-        #continueShop {
-            background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
-            background-color: #20bf55;
-            height: 30px;
-            color: white;
-            position: fixed;
-            text-decoration: none;
-            font-size: 20px;
-            padding: 5px;
-            margin-top: 1%;
-        }
-
-
-        /*  download button */
-
-        #download-pdf-button {
-            background-color: #1c87c9;
-            -webkit-border-radius: 60px;
-            border-radius: 30px;
-            border: none;
-            color: #eeeeee;
-            cursor: pointer;
-            display: inline-block;
-            font-family: sans-serif;
-            font-size: 20px;
-            padding: 5px 15px;
-            text-align: center;
-            text-decoration: none;
-        }
-
-        @keyframes glowing {
-            0% {
-                background-color: #D32F2F;
-                box-shadow: 0 0 5px #B71C1C;
-            }
-
-            50% {
-                background-color: #E57373;
-                box-shadow: 0 0 20px #B71C1C;
-            }
-
-            100% {
-                background-color: #B71C1C;
-                box-shadow: 0 0 5px #B71C1C;
-            }
-        }
-
-        #download-pdf-button {
-            animation: glowing 1500ms infinite;
-        }
     </style>
 </head>
 
@@ -409,7 +49,7 @@
             <a href="./product.html">Originals</a>
             <a href="">Accessories</a>
             <a href="">Sale</a>
-            <a href="">Sustainability</a>
+            <a href="./orders.html">My Orders</a>
         </div>
 
         <div class="cart">
@@ -499,7 +139,8 @@
         <hr>
 
         <h4>From :</h4>
-        <Address> 123 ABC Street </Address>
+        <h4>Shoempire International</h4>
+        <Address> 123 ABC Street <span>PIN: 200110</span> </Address>
         <Address> Delhi </Address>
         <Address>India</Address>
         <br>
@@ -643,6 +284,17 @@
 
     </footer>
 
+    <div class="containerTo">
+        <div class="toast" id="toast">
+            <i id="icon" class="fas fa-exclamation-circle"></i>
+            <p class="toast-text" id="message">Oops, Wrong email or password!</p>
+            <p> <a href="" id="linkNext"></a> </p>
+            <i class="fas fa-close" id="close"></i>
+        </div>
+
+        <button id="open">Open</button>
+    </div>
+
 </body>
 
 <script>
@@ -651,6 +303,21 @@
     let token = JSON.parse(localStorage.getItem("token"))
 
     let logInStatus = document.getElementById('logInStatus')
+
+    //  alert
+    const openBtn = document.getElementById("open");
+    const toast = document.getElementById("toast");
+    const closeBtn = document.getElementById("close");
+    let icon = document.getElementById("icon")
+
+    let message = document.getElementById('message')
+    let linkNext = document.getElementById('linkNext')
+
+
+    closeBtn.addEventListener("click", () => {
+        toast.classList.remove("active");
+    })
+    // alert
 
     if (token) {
         logInStatus.innerText = "Sign Out"
@@ -694,7 +361,12 @@
 
 
         if (!full_name || !email || !card_holder || !card_number || !expMonth || !expYear || !cvv) {
-            alert("plese fill all details");
+
+            message.innerText = "Please fill all the details !"
+            toast.classList.add("active");
+            setTimeout(() => {
+                toast.classList.remove("active");
+            }, 5000)
             return;
         }
 
@@ -712,7 +384,13 @@
             return res.json()
         }).then((data) => {
             console.log(data)
-            alert(data.massage)
+            alert(data.message)
+            toast.style.borderLeft = "3px solid #1976D2"
+            message.innerText = data.message, + "Please download the bill !"
+            toast.classList.add("active");
+            setTimeout(() => {
+                toast.classList.remove("active");
+            }, 5000)
         }).catch((err) => {
             console.log(err)
         })
@@ -744,7 +422,7 @@
     let mobileNum = document.getElementById('mobileNum')
     let address = JSON.parse(localStorage.getItem("address"))
     Fullname.innerText = address.full_name;
-    fullAdd.innerText = address.full_address + "," + "city:" + address.city + "," + address.state + "," + address.pin
+    fullAdd.innerText = address.full_address + "," + "\n" + `City: ` + address.city + ", " + address.state + ", " + address.pin
     mobileNum.innerText = address.mobile
 
 

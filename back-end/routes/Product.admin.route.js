@@ -9,12 +9,4 @@ const { ProductModel } = require("../models/product.model");
 
 
 
-//   all user product routes are here -- > /
-
-
-
-
-
-
-
 module.exports = { adminRoute }
