@@ -8,6 +8,8 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
     <title>Document</title>
 
     <style>
@@ -206,6 +208,65 @@
             padding-top: 4%;
             margin-right: 5%;
         }
+
+
+
+        /*toast */
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .toast {
+            position: fixed;
+            top: 70%;
+            right: 25px;
+            width: 375px;
+            background: #F3F3F3;
+
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /*   gap: 20px; */
+            border-radius: 12px;
+            border-left: 3px solid red;
+            overflow: hidden;
+            transform: translateX(calc(100% + 25px));
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+            font-family: sans-serif;
+
+        }
+
+        .toast.active {
+            transform: translateX(0);
+        }
+
+        .toast i:first-child {
+            color: #1976D2;
+
+            font-size: 20px;
+        }
+
+        .toast-text {
+            margin: 0;
+            font-size: .8125rem;
+            text-transform: uppercase;
+        }
+
+        .toast i:last-child {
+            color: #ccc;
+            cursor: pointer;
+            transition: 350ms;
+        }
+
+        .toast i:last-child:hover {
+            color: #333;
+
+        }
     </style>
 </head>
 
@@ -385,12 +446,36 @@
 
     </footer>
 
+    <div class="container">
+        <div class="toast" id="toast">
+            <i id="icon" class="fas fa-exclamation-circle"></i>
+            <p class="toast-text" id="message">Oops, Wrong email or password!</p>
+            <p> <a href="" id="linkNext"></a> </p>
+            <i class="fas fa-close" id="close"></i>
+        </div>
+
+        <button id="open">Open</button>
+    </div>
+
+
 </body>
 <script>
 
     let url = "http://localhost:8080"
     let form = document.querySelector('form');
     let submit = document.getElementById("submit")
+
+    const openBtn = document.getElementById("open");
+    const toast = document.getElementById("toast");
+    const closeBtn = document.getElementById("close");
+    let icon = document.getElementById("icon")
+
+    let message = document.getElementById('message')
+    let linkNext = document.getElementById('linkNext')
+    closeBtn.addEventListener("click", () => {
+        toast.classList.remove("active");
+    })
+
     submit.addEventListener("click", (e) => {
         e.preventDefault()
         let email = form[0].value;
@@ -402,7 +487,11 @@
         let password = form[6].value
         let obj = { email, first_name, last_name, dob, mobile, user_name, password }
         if (!email || !first_name || !last_name || !dob || !mobile || !user_name || !password) {
-            alert("please fill all details !!")
+            message.innerText = `Please fill all the details !`
+            toast.classList.add("active");
+            setTimeout(() => {
+                toast.classList.remove("active");
+            }, 5000)
             return
         }
         fetch(`${url}/signup`, {
@@ -417,6 +506,16 @@
         }).then((data) => {
             console.log(data)
             alert(`${data.message}`)
+            toast.style.borderLeft = "3px solid #1976D2"
+            message.innerText = data.message
+            linkNext.href = "./signin.html";
+            linkNext.innerText = 'redirecting to signin page . . .'
+            toast.classList.add("active");
+            setTimeout(() => {
+                toast.classList.remove("active");
+                window.location = './signin.html'
+            }, 5000)
+
         }).catch((err) => {
             console.log(err)
         })

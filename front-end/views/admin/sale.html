@@ -17,7 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.0/jspdf.debug.js"></script>
-    <link rel="stylesheet" href="./admincss/admin.users.css">
+    <link rel="stylesheet" href="./admincss/admin.sales.css">
     <title>Document</title>
     <style>
 
@@ -46,16 +46,17 @@
             <a href="./admin.product.html">Men</a>
             <a href="./admin.product.html">Woman</a>
             <a href="./orders.html">Orders</a>
-            <a href="">Accessories</a>
-            <a href="./sale.html">Sales & Revenue</a>
+            <a href="./users.html">Active Users</a>
+            <a href="">Originals</a>
         </div>
 
         <div class="cart">
             <div>
                 <i style="font-size:35px ;" class="fa fa-search"></i>
             </div>
-            <div id="cartDiv">
-                <a href=""> <i class="fa">&#xf07a;</i></a>
+            <div>
+                <a href=""> <i style="font-size:35px ; color: white; padding-left: 34%;" class="fa">&#xf07a;
+                    </i></a>
             </div>
         </div>
     </nav>
@@ -64,35 +65,59 @@
     <a href="./admin.product.html" id="backTohomepage"> &#8617; Back to Homepage </a>
 
 
+    <div class="pricing-table">
+        <div class="pricing-card">
+            <h3 class="pricing-card-header">Total Active Users</h3>
+            <div class="price" id="users"> </span><span>000+</span></div>
+            <ul>
+                <li><strong></strong> </li>
+                <li><strong></strong></li>
+                <li><strong></strong> </li>
+                <li><strong></strong></li>
+                <li><strong></strong></li>
+            </ul>
 
-    <div id="contanier">
-        <h1>All Users</h1>
+        </div>
 
-        <table id="recipt">
-            <tr id="row">
-                <th>Sr. No.</th>
-                <th>user ObjectID</th>
-                <th>Full Name</th>
-                <th>Registered Email</th>
-                <th>User Name</th>
-                <th>Mobile</th>
-                <th>Date of Birth</th>
-            </tr>
+        <div class="pricing-card">
+            <h3 class="pricing-card-header">Total Order Placed</h3>
+            <div class="price" id="order"><sup></sup>30<span>000+</span></div>
+            <ul>
+                <li><strong></strong> </li>
+                <li><strong></strong></li>
+                <li><strong></strong> </li>
+                <li><strong></strong></li>
+                <li><strong></strong></li>
+            </ul>
 
-            <tbody id="elements">
+        </div>
 
-                <!-- append item bill here -->
+        <div class="pricing-card">
+            <h3 class="pricing-card-header">Total Items Placed </h3>
+            <div class="price" id="item"><sup></sup> <span></span> <sup></sup><span>/MO</span></div>
+            <ul>
+                <li><strong></strong> </li>
+                <li><strong></strong></li>
+                <li><strong></strong> </li>
+                <li><strong></strong></li>
+                <li><strong></strong></li>
+            </ul>
 
-            </tbody>
+        </div>
 
-        </table>
+        <div class="pricing-card">
+            <h3 class="pricing-card-header">Total Revenue</h3>
+            <div class="price" id="revenue"><sup></sup><span>/MO</span></div>
+            <ul>
+                <li><strong></strong> </li>
+                <li><strong></strong></li>
+                <li><strong></strong> </li>
+                <li><strong></strong></li>
+                <li><strong></strong></li>
+            </ul>
 
-
-
+        </div>
     </div>
-
-
-
 
 
 
@@ -204,75 +229,76 @@
 
     }
 
+
     if (token) {
         logInStatus.innerText = "Sign Out"
         logInStatus.href = "../index.html"
-
         document.getElementById('fa').innerHTML = ""
     }
-    if (!token) {
-        document.getElementById('warning').innerText = ""
-    }
+
 
     logInStatus.addEventListener("click", (e) => {
         localStorage.removeItem("token")
         localStorage.removeItem("bill");
         localStorage.removeItem("addressData")
-        localStorage.removeItem("address")
+        localStorage.removeItem("address");
+        return
     })
 
 
+    function fetchProducts() {
+        fetch(`${url}/order`)
+            .then((res) => {
+                return res.json();
+            }).then((data) => {
+                // console.log(data)
+                countFunction(data)
+            }).catch((err) => {
+                console.log(err)
+            })
 
 
-    fetch(`${url}/users`, {
-        method: "GET",
-        mode: "cors",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
-        .then((res) => {
-            return res.json();
-        }).then((data) => {
-            console.log(data)
-            showUsers(data)
-        }).catch((err) => {
-            console.log(err)
+        fetch(`${url}/users`, {
+            method: "GET",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json"
+            }
         })
+            .then((res) => {
+                return res.json();
+            }).then((data) => {
+                // console.log(data)
+                document.getElementById("users").innerText = data.length
 
-    let Tbody = document.getElementById("elements")
+            }).catch((err) => {
+                console.log(err)
+            })
 
-    function showUsers(data) {
-        let Serial = 1
-        data.forEach((e, index) => {
-
-            let row = document.createElement("tr")
-
-            let Sr = document.createElement("td")
-            let userID = document.createElement("td")
-            let name = document.createElement("td")
-            let email = document.createElement("td")
-            let username = document.createElement("td")
-            let mobile = document.createElement("td")
-            let dob = document.createElement("td")
-
-
-            Sr.innerText = Serial;
-            userID.innerText = e._id;
-            name.innerText = e.first_name + " " + e.last_name;
-            email.innerText = e.email;
-            username.innerText = e.user_name;
-            mobile.innerText = e.mobile;
-            dob.innerText = e.dob
-
-            row.append(Sr, userID, name, email, username, mobile, dob)
-            Tbody.append(row)
-            Serial++
-
-            row.setAttribute("id", "row")
-
-        })
     }
+
+    fetchProducts()
+
+    let total_orders = 0
+    let total_items = 0
+    let total_revenue = 0
+
+    function countFunction(data) {
+
+        for (let i = 0; i < data.length; i++) {
+            total_orders++
+            total_items += data[i].orderItem.length;
+            total_revenue += data[i].bill
+
+        }
+        document.getElementById('order').innerText = total_orders
+        document.getElementById('item').innerText = total_items
+        document.getElementById('revenue').innerText = total_revenue + '₹'
+
+
+    }
+
+
 
 
 

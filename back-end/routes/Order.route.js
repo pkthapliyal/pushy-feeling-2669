@@ -9,25 +9,21 @@ const { ProductModel } = require("../models/product.model");
 const { AddressModel } = require("../models/address.model")
 const { OrderModel } = require("../models/order.model")
 
-// orderRoute.get("/", async (req, res) => {
-//     const token = req.headers.authorization;
-//     tokenvalue = token.replace("Bearer ", "")
-//     jwt.verify(tokenvalue, "secretKey", async (err, decoded) => {
-//         // if (decoded) {
-//         //     user = await AddressModel.findOne({ userID: decoded.userID })
-//         //     if (!user.addressData) {
-//         //         return res.status(200).send({ "message": "you have not updated any" })
-//         //     }
+orderRoute.get("/user", async (req, res) => {
+    const token = req.headers.authorization;
+    tokenvalue = token.replace("Bearer ", "")
+    jwt.verify(tokenvalue, "secretKey", async (err, decoded) => {
+        if (decoded) {
+            orderList = await OrderModel.find({ userID: decoded.userID })
+            if (!orderList) {
+                return res.status(200).send({ "message": false })
+            }
+            return res.status(200).send(orderList)
+        }
+        return res.status(404).send({ "message": err })
+    })
 
-//         //     return res.status(200).send(user.addressData)
-
-//         // }
-//         // return res.status(404).send({ "message": err })
-//         res.send()
-
-//     })
-//     res.send()
-// })
+})
 
 orderRoute.get("/", async (req, res) => {
     orderList = await OrderModel.find()

@@ -53,7 +53,7 @@ cartRoute.post("/:id", async (req, res) => {
                 return res.status(200).send({ "message": `Item has been added to cart ` })
             }
             else {
-                return res.status(200).send({ "message": `Item is alread in cart ` })
+                return res.status(200).send({ "message": `Item is already in cart !` })
             }
         }
         else {

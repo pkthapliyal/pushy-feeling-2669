@@ -10,266 +10,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="./css//cart.css">
     <title>Document</title>
     <style>
-        * {
-            font-family: 'Montserrat';
-        }
 
-        .login_nav {
-            width: 100%;
-            height: 45px;
-            margin: auto;
-            padding: auto;
-            background-color: #F3F3F3;
-            display: flex;
-            justify-content: end;
-            align-items: center;
-
-        }
-
-        .login_nav div {
-            width: 35%;
-            padding-right: 1%;
-            color: #37474F;
-            display: flex;
-            justify-content: space-evenly;
-            font-size: 15px;
-            ;
-        }
-
-        .login_nav div a {
-            text-decoration: none;
-            color: #37474F;
-        }
-
-
-        /*  Main nav bar */
-        .main {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            /* margin-bottom: -1%; */
-        }
-
-        .main img {
-            width: 10%;
-        }
-
-        .main div {
-            display: flex;
-            align-items: center;
-        }
-
-        .main a {
-            margin-left: 1%;
-            margin-right: 1%;
-            text-decoration: none;
-            color: #37474F;
-        }
-
-        .main a:hover {
-            margin-left: 1%;
-            margin-right: 1%;
-            font-weight: bold;
-            color: #263238;
-        }
-
-        .cart {
-            margin-right: 1%;
-            width: 20%;
-            height: 65px;
-            text-align: center;
-            margin: auto;
-        }
-
-        .cart div i {
-            margin: auto;
-        }
-
-        .cart div:nth-child(1) {
-            /* border: 1px solid #1976D2; */
-            width: 50%;
-            height: 75px;
-
-        }
-
-        .cart div:nth-child(2) {
-            background-color: #1976D2;
-            color: white;
-            width: 50%;
-            height: 75px;
-        }
-
-
-
-        /* footer */
-
-        .about_section {
-            width: 100%;
-            margin: auto;
-            margin-top: 20%;
-            padding: 2%;
-            display: grid;
-            grid-template-columns: repeat(4, 25%);
-
-        }
-
-        .about_section div a {
-            display: block;
-        }
-
-        .about_section div a {
-            color: #37474F;
-            text-decoration: none;
-            /* margin: 2% 2% !important; */
-            margin-bottom: 3%;
-
-        }
-
-        footer {
-            margin: auto;
-            display: flex;
-            background-color: #333;
-            color: white;
-            padding-top: 2%;
-            padding-left: 2%;
-            font-size: 12px;
-            padding-bottom: 10%;
-        }
-
-        ul.no-bullets {
-            display: flex;
-            list-style-type: none;
-            margin-right: 20%;
-        }
-
-        ul.no-bullets li {
-            padding-right: 5%;
-        }
-
-
-        footer div img {
-            width: 80px;
-            height: 50px;
-            padding-top: 4%;
-            margin-right: 5%;
-        }
-
-        /*  container */
-        #container {
-            width: 100%;
-            margin: auto;
-            margin-top: 1%;
-            border: 1px solid black;
-            display: flex;
-            /* padding-bottom: 100%; */
-
-        }
-
-
-
-
-
-        /*  container containing product */
-
-        #continueShop {
-            height: 30px;
-            color: white;
-            position: fixed;
-            text-decoration: none;
-            font-size: 20px;
-            padding: 5px;
-            margin-top: 1%;
-            background-color: #1976D2;
-            background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
-        }
-
-
-        #productContainer {
-            width: 65%;
-
-        }
-
-        #product {
-            /* width: 100%; */
-            margin: auto;
-            padding: 3%;
-            margin-left: 5%;
-            border-radius: 1%;
-            box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-            display: grid;
-            grid-template-columns: 30% 30% 10% 10% 10%;
-            column-gap: 0px;
-            row-gap: 1%;
-
-        }
-
-        .product div {
-            border: 1px solid teal;
-
-        }
-
-        .product:hover {
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
-        }
-
-        .product_img {
-            width: 100%;
-            margin: auto;
-            /* border: 1px solid teal; */
-        }
-
-
-        .checked {
-            color: #C33764;
-        }
-
-        .deleteItem {
-            /* width: 40%; */
-            height: 40px;
-            /* background-color: #1976D2; */
-            /* color: white; */
-            border-radius: 5px;
-            border: none;
-            font-weight: bold;
-            font-size: 16px;
-            margin-bottom: -5%;
-        }
-
-
-        /*  bill */
-        #bill {
-            width: 28%;
-            font-size: 14px;
-            background-color: white;
-            position: fixed;
-            padding: 2%;
-            margin-top: 20%;
-            position: fixed;
-            top: 8px;
-            right: 16px;
-            box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
-
-        }
-
-        #buyAll {
-            width: 100%;
-            background-color: #263238;
-            padding: 10px;
-            color: white;
-            font-weight: bold;
-            margin-top: 5%;
-            text-decoration: none;
-        }
     </style>
 </head>
 
 <body>
     <nav class="login_nav">
         <div>
-            <i style="font-size:20px; color:#455A64; margin-right: -10px;" class="fa">&#xf0d1;</i>
-            <a href="">Track Order</a>
+            <i style="font-size:20px; color:#455A64; margin-right: -10px;" id="fafa" class="fa">&#xf0d1;</i>
+            <a href="" id="trackOrder">Track Order</a>
             <i style="font-size:20px; color:#455A64; margin-right: -10px;" id="fa" class="fa">&#xf041;</i>
             <a href="" id="storeLocator">Store Locator</a>
             <i class="fa fa-user" style="font-size:20px; color:#455A64; margin-right: -10px;"></i>
@@ -438,7 +191,18 @@
         </div>
 
 
-    </footer>
+
+        <div class="containerTo">
+            <div class="toast" id="toast">
+                <i id="icon" class="fas fa-exclamation-circle"></i>
+                <p class="toast-text" id="message">Oops, Wrong email or password!</p>
+                <p> <a href="" id="linkNext"></a> </p>
+                <i class="fas fa-close" id="close"></i>
+            </div>
+
+            <button id="open">Open</button>
+        </div>
+
 
 </body>
 
@@ -450,19 +214,54 @@
     let logInStatus = document.getElementById('logInStatus')
 
     let cartInfo = document.getElementById('cartInfo');
+    let user = JSON.parse(localStorage.getItem("username"))
+
+
+    //  alert
+
+    const openBtn = document.getElementById("open");
+    const toast = document.getElementById("toast");
+    const closeBtn = document.getElementById("close");
+    let icon = document.getElementById("icon")
+
+    let message = document.getElementById('message')
+    let linkNext = document.getElementById('linkNext')
+
+
+    closeBtn.addEventListener("click", () => {
+        toast.classList.remove("active");
+    })
+    // alert
+
+    if (!token) {
+        document.getElementById('warning').innerText = ""
+        document.getElementById('coupen').innerText = "Nothing to see !"
+        document.getElementById('bill').style.display = "none"
+
+    }
+
+
+    else if (user == "Admin") {
+        logInStatus.innerText = "Sign Out"
+        logInStatus.href = "./index.html"
+        cartInfo.innerHTML = ""
+        document.getElementById('trackOrder').innerText = "Visit User Side !"
+        document.getElementById('trackOrder').href = './admin/admin.product.html'
+        document.getElementById('trackOrder').style.color = "#1976D2";
+        document.getElementById('storeLocator').style.color = "#1976D2";
+        document.getElementById('storeLocator').innerText = "Hey! " + user
+        document.getElementById('fa').innerHTML = ""
+    }
 
     if (token) {
         logInStatus.innerText = "Sign Out"
         logInStatus.href = "./index.html"
         cartInfo.innerHTML = ""
-        document.getElementById('storeLocator').innerText = "Hey! " + JSON.parse(localStorage.getItem("username"))
-        document.getElementById('fa').innerHTML = ""
+        document.getElementById('trackOrder').style.color = "#1976D2";
+        document.getElementById('storeLocator').style.color = "#1976D2";
+
     }
-    if (!token) {
-        document.getElementById('warning').innerText = ""
-        document.getElementById('coupen').innerText = "Nothing to see !"
-        document.getElementById('bill').style.display = "none"
-    }
+
 
     logInStatus.addEventListener("click", (e) => {
         localStorage.removeItem("token")
@@ -600,8 +399,6 @@
     }
 
 
-
-
     //  function delete item
 
     function deleteItem(ID) {
@@ -621,8 +418,12 @@
         }).then((res) => {
             return res.json()
         }).then((data) => {
-            console.log(data)
-            alert(data.message)
+            toast.style.borderLeft = "3px solid #1976D2"
+            message.innerText = data.message
+            toast.classList.add("active");
+            setTimeout(() => {
+                toast.classList.remove("active");
+            }, 5000)
             fetchProducts()
         }).catch((err) => {
             console.log(err)
@@ -637,10 +438,21 @@
         let data = JSON.parse(localStorage.getItem("cartItem"))
         if (data.length == 0) {
             checkOut.href = ""
-            alert("Please add something in cart to checkout !")
+            message.innerText = 'Please add something in cart to checkout !'
+            toast.classList.add("active");
+            setTimeout(() => {
+                toast.classList.remove("active");
+            }, 5000)
+            return;
         }
         else {
-            window.location = './checkout.html'
+            message.innerText = 'Redirecting to checkout . . .'
+            toast.classList.add("active");
+            setTimeout(() => {
+                toast.classList.remove("active");
+                window.location = './address.html'
+            }, 2000)
+
         }
 
     })

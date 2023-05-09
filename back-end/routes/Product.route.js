@@ -18,7 +18,7 @@ productRoute.get("/", async (req, res) => {
         if (search) {
             products = await ProductModel.find({ description: { $regex: search, $options: "i" } })
             if (products.length == 0) {
-                return res.status(404).send({ "message": "try something else" })
+                return res.status(404).send({ "message": "try something else !" })
             }
             return res.send(products)
         }
