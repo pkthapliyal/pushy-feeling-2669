@@ -10,10 +10,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./admincss/admin.product.css">
-    <title>Document</title>
+    <title>shoempire</title>
+    <link rel="icon" type="image/x-icon" href="/front-end//images//Empire.png" sizes="30x35">
 
     <style>
-
+        * {
+            box-sizing: border-box;
+        }
     </style>
 </head>
 
@@ -413,9 +416,7 @@
             <i class="fas fa-close" id="close"></i>
         </div>
 
-        <button id="open">Open</button>
     </div>
-
 
 </body>
 
@@ -446,7 +447,7 @@
         toast.classList.add("active");
         setTimeout(() => {
             toast.classList.remove("active");
-            window.location = "../index.html"
+            window.location = "/front-end/index.html"
         }, 5000)
 
     })

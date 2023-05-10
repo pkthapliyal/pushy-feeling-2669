@@ -191,7 +191,6 @@ button {
 #container {
     width: 100%;
     margin: auto;
-    border: 1px solid black;
     display: flex;
     /* padding-bottom: 100%; */
 

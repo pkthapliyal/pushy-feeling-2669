@@ -12,7 +12,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="./css//cart.css">
-    <title>Document</title>
+    <title>shoempire</title>
+    <link rel="icon" type="image/x-icon" href="/front-end//images//Empire.png" sizes="30x35">
     <style>
 
     </style>
@@ -35,14 +36,15 @@
 
     <nav class="main">
         <div>
-            <img src="../images//gifmaker_me (1).gif" alt="">
+            <img src="/front-end/images//gifmaker_me (1).gif" alt="">
+            <a href="/front-end//index.html">Hompage</a>
             <a href="./product.html">Woman</a>
             <a href="./product.html">Men</a>
             <a href="./product.html">Kids</a>
             <a href="./product.html">Originals</a>
             <a href="">Accessories</a>
             <a href="">Sale</a>
-            <a href="">Sustainability</a>
+
         </div>
 
         <div class="cart">
@@ -88,15 +90,12 @@
                 <h3>Order Total : <span id="discountTotal">0 Rs.</span></h3>
                 <h4>Click here to Checkout ↓</h4>
 
-
-                <div id="buyAll"> <a id="checkOut" href="./address.html" style="color: white; text-decoration: none
-                ;"> Checkout</a></div>
+                <div id="buyAll"> <a id="checkOut" href="./address.html" style="color: white; text-decoration: none;">
+                        Checkout</a></div>
             </div>
         </div>
 
     </div>
-
-
 
 
 
@@ -167,6 +166,7 @@
     </div>
 
 
+
     <footer>
 
 
@@ -181,12 +181,12 @@
                 International Limited.</p>
             <p>C & J SHOEMPIRE America, Inc., 140 Kendrick Street, Needham, MA 02494</p>
 
-            <img src="../images//discover.png" alt="">
-            <img src="../images//paypal.png" alt="">
-            <img src="../images//Klarna.png" alt="">
-            <img src="../images//mastercard.png" alt="">
+            <img src="/front-end//images/discover.png" alt="">
+            <img src="/front-end//images//paypal.png" alt="">
+            <img src="/front-end//images//Klarna.png" alt="">
+            <img src="/front-end//images//mastercard.png" alt="">
 
-            <img src="../images/visa.png" alt="">
+            <img src="/front-end//images//visa.png" alt="">
 
         </div>
 
@@ -200,7 +200,7 @@
                 <i class="fas fa-close" id="close"></i>
             </div>
 
-            <button id="open">Open</button>
+
         </div>
 
 
@@ -233,32 +233,25 @@
     })
     // alert
 
-    if (!token) {
-        document.getElementById('warning').innerText = ""
-        document.getElementById('coupen').innerText = "Nothing to see !"
-        document.getElementById('bill').style.display = "none"
-
-    }
-
-
-    else if (user == "Admin") {
-        logInStatus.innerText = "Sign Out"
-        logInStatus.href = "./index.html"
-        cartInfo.innerHTML = ""
+    if ((user == "Admin" || user == "user" && token)) {
+        logInStatus.href = "/front-end/index.html"
+        document.getElementById('trackOrder').style.color = "#1976D2";
         document.getElementById('trackOrder').innerText = "Visit User Side !"
         document.getElementById('trackOrder').href = './admin/admin.product.html'
-        document.getElementById('trackOrder').style.color = "#1976D2";
-        document.getElementById('storeLocator').style.color = "#1976D2";
-        document.getElementById('storeLocator').innerText = "Hey! " + user
-        document.getElementById('fa').innerHTML = ""
+        // document.getElementById('trackOrder').style.color = "#1976D2";
+        // document.getElementById('storeLocator').style.color = "#1976D2";
+
     }
+
 
     if (token) {
         logInStatus.innerText = "Sign Out"
-        logInStatus.href = "./index.html"
-        cartInfo.innerHTML = ""
-        document.getElementById('trackOrder').style.color = "#1976D2";
+        logInStatus.innerText = "Sign Out"
+        logInStatus.href = "/front-end/index.html"
+
         document.getElementById('storeLocator').style.color = "#1976D2";
+        document.getElementById('storeLocator').innerText = "Hey! " + user
+        document.getElementById('fa').innerHTML = ""
 
     }
 
@@ -266,6 +259,43 @@
     logInStatus.addEventListener("click", (e) => {
         localStorage.removeItem("token")
     })
+
+    if (!token) {
+        document.getElementById('warning').innerText = ""
+        document.getElementById('coupen').innerText = "Nothing to see !"
+        document.getElementById('bill').style.display = "none"
+        document.getElementById('coupen').style.display = "none"
+
+    }
+
+
+
+    let checkOut = document.getElementById("checkOut")
+
+    document.getElementById('buyAll').addEventListener("click", (e) => {
+        e.preventDefault();
+        let data = JSON.parse(localStorage.getItem("cartItem"))
+        if (data.length == 0) {
+            checkOut.href = ""
+            message.innerText = 'Please add something in cart to checkout !'
+            toast.classList.add("active");
+            setTimeout(() => {
+                toast.classList.remove("active");
+            }, 5000)
+            return;
+        }
+        else {
+            message.innerText = 'Redirecting to checkout . . .'
+            toast.classList.add("active");
+            setTimeout(() => {
+                toast.classList.remove("active");
+                window.location = './address.html'
+            }, 2000)
+
+        }
+
+    })
+
 
 
     //  finding individual array of cart
@@ -287,7 +317,6 @@
         }).then((res) => {
             return res.json()
         }).then((data) => {
-            console.log(data)
             localStorage.setItem("cartItem", JSON.stringify(data))
             showData(data)
         }).catch((err) => {
@@ -299,7 +328,7 @@
     let Total = document.getElementById("cartTotal");
     let discountTotal = document.getElementById("discountTotal")
     let discount = document.getElementById("discount")
-    let BuyBtn = document.getElementById("buyAll")
+    // let BuyBtn = document.getElementById("buyAll")
 
 
 
@@ -402,12 +431,15 @@
     //  function delete item
 
     function deleteItem(ID) {
-
         if (!token) {
-            alert("please login / register first to add in cart")
-            return;
-        }
 
+            message.innerText = 'Please login / register first to add in cart'
+            toast.classList.add("active");
+            setTimeout(() => {
+                toast.classList.remove("active");
+            }, 5000)
+
+        }
         fetch(`${url}/cart/remove/${ID}`, {
             method: "PATCH",
             mode: "cors",
@@ -431,31 +463,7 @@
         event.stopPropagation()
     }
 
-    let checkOut = document.getElementById('checkOut')
 
-    checkOut.addEventListener("click", (e) => {
-        e.preventDefault();
-        let data = JSON.parse(localStorage.getItem("cartItem"))
-        if (data.length == 0) {
-            checkOut.href = ""
-            message.innerText = 'Please add something in cart to checkout !'
-            toast.classList.add("active");
-            setTimeout(() => {
-                toast.classList.remove("active");
-            }, 5000)
-            return;
-        }
-        else {
-            message.innerText = 'Redirecting to checkout . . .'
-            toast.classList.add("active");
-            setTimeout(() => {
-                toast.classList.remove("active");
-                window.location = './address.html'
-            }, 2000)
-
-        }
-
-    })
 
 
 </script>

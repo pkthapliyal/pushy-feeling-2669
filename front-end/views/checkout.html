@@ -19,7 +19,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.0/jspdf.debug.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="./css//checkout.css">
-    <title>Document</title>
+    <title>shoempire</title>
+    <link rel="icon" type="image/x-icon" href="/front-end//images//Empire.png" sizes="30x35">
     <style>
 
     </style>
@@ -42,7 +43,7 @@
 
     <nav class="main">
         <div>
-            <img src="../images//gifmaker_me (1).gif" alt="">
+            <img src="/front-end/images//gifmaker_me (1).gif" alt="">
             <a href="./product.html">Woman</a>
             <a href="./product.html">Men</a>
             <a href="./product.html">Kids</a>
@@ -271,13 +272,13 @@
                 SHOEMPIRE
                 International Limited.</p>
             <p>C & J SHOEMPIRE America, Inc., 140 Kendrick Street, Needham, MA 02494</p>
+            <img src="/front-end//images/discover.png" alt="">
+            <img src="/front-end//images//paypal.png" alt="">
+            <img src="/front-end//images//Klarna.png" alt="">
+            <img src="/front-end//images//mastercard.png" alt="">
 
-            <img src="../images//discover.png" alt="">
-            <img src="../images//paypal.png" alt="">
-            <img src="../images//Klarna.png" alt="">
-            <img src="../images//mastercard.png" alt="">
+            <img src="/front-end//images//visa.png" alt="">
 
-            <img src="../images/visa.png" alt="">
 
         </div>
 
@@ -384,7 +385,7 @@
             return res.json()
         }).then((data) => {
             console.log(data)
-            alert(data.message)
+            // alert(data.message)
             toast.style.borderLeft = "3px solid #1976D2"
             message.innerText = data.message, + "Please download the bill !"
             toast.classList.add("active");
