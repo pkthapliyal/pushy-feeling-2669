@@ -10,263 +10,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
-    <title>Document</title>
-
+    <title>shoempire</title>
+    <link rel="icon" type="image/x-icon" href="/front-end//images//Empire.png" sizes="30x35">
+    <link rel="stylesheet" href="./css//signup.css">
     <style>
-        * {
-            font-family: 'Montserrat';
-        }
-
-        .spring {
-            width: 100%;
-            margin-top: auto;
-            margin-top: -1%;
-            background-color: #87B3D4;
-            text-align: center;
-            font-family: 'Montserrat';
-            padding: .5%;
-
-        }
-
-        .spring span {
-            font-size: 24px;
-            margin-left: 5%;
-            margin-right: 5%;
-            font-weight: bold;
-        }
-
-        .login_nav {
-            width: 100%;
-            height: 45px;
-            margin: auto;
-            padding: auto;
-            background-color: #F3F3F3;
-            display: flex;
-            justify-content: end;
-            align-items: center;
-
-        }
-
-        .login_nav div {
-            width: 35%;
-            padding-right: 1%;
-            color: #37474F;
-            display: flex;
-            justify-content: space-evenly;
-            font-size: 15px;
-            ;
-        }
-
-        .login_nav div a {
-            text-decoration: none;
-            color: #37474F;
-        }
-
-
-        /*  Main nav bar */
-        .main {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .main img {
-            width: 10%;
-        }
-
-        .main div {
-            display: flex;
-            align-items: center;
-        }
-
-        .main a {
-            margin-left: 1%;
-            margin-right: 1%;
-            text-decoration: none;
-            color: #37474F;
-        }
-
-        .main a:hover {
-            margin-left: 1%;
-            margin-right: 1%;
-            font-weight: bold;
-            color: #263238;
-        }
-
-        .cart {
-            margin-right: 1%;
-            width: 20%;
-            height: 65px;
-            text-align: center;
-            margin: auto;
-        }
-
-        .cart div i {
-            margin: auto;
-        }
-
-        .cart div:nth-child(1) {
-            border: 1px solid #1976D2;
-            width: 50%;
-            height: 65px;
-            margin: auto;
-            padding: auto;
-        }
-
-        .cart div:nth-child(2) {
-            background-color: #1976D2;
-            color: white;
-            width: 50%;
-            height: 65px;
-
-        }
-
-        /*  div form of login */
-        .form {
-            width: 30%;
-            margin: auto;
-            margin-top: 3%;
-            padding: auto;
-            margin-bottom: 7%;
-        }
-
-        .form input {
-            width: 99%;
-            height: 35px;
-            border-radius: 5px;
-            border: 1px solid #263238;
-            margin: auto;
-            margin-bottom: 2%;
-            margin-top: 2%;
-        }
-
-        .form span {
-            font-size: 14px;
-        }
-
-        #submit {
-            width: 100%;
-            height: 40px;
-            margin-top: 3%;
-            border-radius: 5px;
-            background-color: #666;
-            color: white;
-            border: none;
-        }
-
-
-
-
-
-        /* footer */
-
-        .about_section {
-            width: 100%;
-            padding: 2%;
-            display: grid;
-            grid-template-columns: repeat(4, 25%);
-
-        }
-
-        .about_section div a {
-            display: block;
-        }
-
-        .about_section div a {
-            color: #37474F;
-            text-decoration: none;
-            /* margin: 2% 2% !important; */
-            margin-bottom: 3%;
-
-        }
-
-        footer {
-            margin: auto;
-            display: flex;
-            background-color: #333;
-            color: white;
-            padding-top: 2%;
-            padding-left: 2%;
-            font-size: 12px;
-            padding-bottom: 10%;
-        }
-
-        ul.no-bullets {
-            display: flex;
-            list-style-type: none;
-            margin-right: 20%;
-        }
-
-        ul.no-bullets li {
-            padding-right: 5%;
-        }
-
-
-        footer div img {
-            width: 80px;
-            height: 50px;
-            padding-top: 4%;
-            margin-right: 5%;
-        }
-
-
-
-        /*toast */
-        .container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            min-height: 100vh;
-        }
-
-        .toast {
-            position: fixed;
-            top: 70%;
-            right: 25px;
-            width: 375px;
-            background: #F3F3F3;
-
-            padding: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            /*   gap: 20px; */
-            border-radius: 12px;
-            border-left: 3px solid red;
-            overflow: hidden;
-            transform: translateX(calc(100% + 25px));
-            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
-            font-family: sans-serif;
-
-        }
-
-        .toast.active {
-            transform: translateX(0);
-        }
-
-        .toast i:first-child {
-            color: #1976D2;
-
-            font-size: 20px;
-        }
-
-        .toast-text {
-            margin: 0;
-            font-size: .8125rem;
-            text-transform: uppercase;
-        }
-
-        .toast i:last-child {
-            color: #ccc;
-            cursor: pointer;
-            transition: 350ms;
-        }
-
-        .toast i:last-child:hover {
-            color: #333;
-
-        }
     </style>
 </head>
 
@@ -295,7 +42,7 @@
 
     <nav class="main">
         <div>
-            <img src="../images//gifmaker_me (1).gif" alt="">
+            <img src="/front-end//images//gifmaker_me (1).gif" alt="">
             <a href="">Woman</a>
             <a href="">Men</a>
             <a href="">Kids</a>
@@ -351,6 +98,15 @@
         </form>
 
     </div>
+    <div class="container">
+        <div class="toast" id="toast">
+            <i id="icon" class="fas fa-exclamation-circle"></i>
+            <p class="toast-text" id="message">Oops, Wrong email or password!</p>
+            <p> <a href="" id="linkNext"></a> </p>
+            <i class="fas fa-close" id="close"></i>
+        </div>
+    </div>
+
 
 
 
@@ -370,7 +126,6 @@
             <a href="">Blog</a>
 
         </div>
-
 
         <div>
             <hr>
@@ -434,34 +189,26 @@
                 International Limited.</p>
             <p>C & J Clark America, Inc., 140 Kendrick Street, Needham, MA 02494</p>
 
-            <img src="../images//discover.png" alt="">
-            <img src="../images//paypal.png" alt="">
-            <img src="../images//Klarna.png" alt="">
-            <img src="../images//mastercard.png" alt="">
+            <img src="/front-end//images/discover.png" alt="">
+            <img src="/front-end//images//paypal.png" alt="">
+            <img src="/front-end//images//Klarna.png" alt="">
+            <img src="/front-end//images//mastercard.png" alt="">
 
-            <img src="../images/visa.png" alt="">
+            <img src="/front-end//images//visa.png" alt="">
+
 
         </div>
 
 
     </footer>
 
-    <div class="container">
-        <div class="toast" id="toast">
-            <i id="icon" class="fas fa-exclamation-circle"></i>
-            <p class="toast-text" id="message">Oops, Wrong email or password!</p>
-            <p> <a href="" id="linkNext"></a> </p>
-            <i class="fas fa-close" id="close"></i>
-        </div>
 
-        <button id="open">Open</button>
-    </div>
 
 
 </body>
 <script>
 
-    let url = "http://localhost:8080"
+    let url = 'https://upset-raincoat-newt.cyclic.app/'
     let form = document.querySelector('form');
     let submit = document.getElementById("submit")
 

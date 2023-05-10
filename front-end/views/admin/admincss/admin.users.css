@@ -112,13 +112,24 @@
 
  }
 
- table,
+
  th,
  td {
      box-sizing: border-box;
-     border: 1px solid black;
+     border: 1px solid #455A64;
+     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
      border-collapse: collapse;
-     padding: 8px;
+
+     padding-top: 10px;
+     padding-bottom: 10px;
+     padding-left: 10px;
+ }
+
+ table {
+     border-collapse: separate;
+     border-spacing: 0 15px;
+     background: linear-gradient(#1cd8d2 → #93edc7);
+
  }
 
 

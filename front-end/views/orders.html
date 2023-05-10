@@ -16,7 +16,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.0/jspdf.debug.js"></script>
     <link rel="stylesheet" href="./css//orders.css">
-    <title>Document</title>
+    <title>shoempire</title>
+    <link rel="icon" type="image/x-icon" href="/front-end//images//Empire.png" sizes="30x35">
     <style>
 
     </style>
@@ -30,7 +31,7 @@
             <i style="font-size:20px; color:#455A64; margin-right: -10px;" id="fa" class="fa">&#xf041;</i>
             <a href="" id="storeLocator">Store Locator</a>
             <i class="fa fa-user" style="font-size:20px; color:#455A64; margin-right: -10px;"></i>
-            <a href="" id="logInStatus">Log Out</a>
+            <a href="/front-end/views//signin.html" id="logInStatus">Login / Register</a>
         </div>
 
     </nav>
@@ -40,7 +41,7 @@
     <nav class="main">
         <div>
             <img src="/front-end/images//gifmaker_me (1).gif" alt="">
-            <a href="./index.html">Homepage</a>
+            <a href="/front-end//index.html">Homepage</a>
             <a href="./product.html">Men</a>
             <a href="./product.html">Woman</a>
             <a href="">Originals</a>
@@ -53,14 +54,14 @@
                 <i style="font-size:35px ;" class="fa fa-search"></i>
             </div>
             <div>
-                <a href=""> <i style="font-size:35px ; color: white; padding-left: 34%;" class="fa">&#xf07a;
+                <a href="./cart.html"> <i style="font-size:35px ; color: white; padding-left: 34%;" class="fa">&#xf07a;
                     </i></a>
             </div>
         </div>
     </nav>
     <hr>
 
-    <a href="./admin.product.html" id="backTohomepage"> &#8617; Back to Homepage </a>
+    <a href="./product.html" id="backTohomepage"> &#8617; Back to Homepage </a>
 
     <div id="bigContainer">
 
@@ -156,8 +157,6 @@
             <p> <a href="" id="linkNext"></a> </p>
             <i class="fas fa-close" id="close"></i>
         </div>
-
-        <button id="open">Open</button>
     </div>
 
 
@@ -165,7 +164,7 @@
 </body>
 
 <script>
-    let url = "http://localhost:8080"
+    let url = 'https://upset-raincoat-newt.cyclic.app/'
 
     let token = JSON.parse(localStorage.getItem("token"))
 
@@ -187,20 +186,20 @@
     })
 
 
+
     if (!token) {
-        logInStatus.innerText = "Signin/ Register"
+        logInStatus.innerText = "Signin / Register"
         logInStatus.href = "./signin.html"
-        // alert("please fill all details !!")
+        alert("please fill all details !!")
         toast.classList.add("active");
         message.innerText = "Please login to see orders"
         setTimeout(() => {
             toast.classList.remove("active");
         }, 5000)
-        return
 
     }
 
-    if (user == "Admin" || user == "user") {
+    else if (user == "Admin" || user == "user") {
         storeLocator.innerText = "Hey! " + user
         storeLocator.style.color = "#1976D2"
         storeLocator.style.fontWeight = "bold"
@@ -216,7 +215,7 @@
 
     if (token) {
         logInStatus.innerText = "Sign Out"
-        logInStatus.href = "./index.html"
+        logInStatus.href = "/front-end/index.html"
         document.getElementById('fa').innerHTML = ""
 
         window.addEventListener("load", (e) => {
@@ -320,12 +319,6 @@
         let span = ` <span> title :${data}</span> <br>`
         return span
     }
-
-
-
-
-
-
 
 
 

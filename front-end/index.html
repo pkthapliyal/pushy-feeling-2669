@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>shoempire</title>
+    <link rel="icon" type="image/x-icon" href="./images//Empire.png" sizes="30x35">
+
+
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./views//css/index.css">
 
 </head>
 
@@ -29,7 +32,7 @@
             <i style="font-size:20px; color:#455A64; margin-right: -10px;" class="fa">&#xf041;</i>
             <a href="">Store Locator</a>
             <i class="fa fa-user" style="font-size:20px; color:#455A64; margin-right: -10px;"></i>
-            <a href="./signin.html">Log In / Register</a>
+            <a href="./views//signin.html" id="logInStatus">Log In / Register</a>
         </div>
 
     </nav>
@@ -38,21 +41,22 @@
 
     <nav class="main">
         <div>
-            <img src="../images//gifmaker_me (1).gif" alt="">
-            <a href="./product.html">Woman</a>
-            <a href="./product.html">Men</a>
-            <a href="./product.html">Kids</a>
-            <a href="./product.html">Originals</a>
-            <a href="./product.html">Accessories</a>
-            <a href="./product.html">Sale</a>
-            <a href="./product.html">Sustainability</a>
+            <img src="./images//gifmaker_me (1).gif" alt="">
+            <a href="./views//product.html">Woman</a>
+            <a href="./views//product.html">Men</a>
+            <a href="./views//product.html">Kids</a>
+            <a href="./views//product.html">Originals</a>
+            <a href="./views//product.html">Accessories</a>
+            <a href="./views//product.html">Sale</a>
+            <a href="./views//product.html">Sustainability</a>
         </div>
 
         <div class="cart">
             <div>
                 <i id="fa" class="fa fa-search"></i>
             </div>
-            <div>
+            <div id="cart">
+
                 <i id="fa" class="fa">&#xf07a;</i>
 
             </div>
@@ -153,10 +157,10 @@
             <hr>
             <h4>DEPARTMENTS</h4>
             <hr>
-            <a href="">Womens</a>
-            <a href="">Mens</a>
-            <a href="">Originals</a>
-            <a href="">Kids</a>
+            <a href="./views//product.html">Womens</a>
+            <a href="./views//product.html">Mens</a>
+            <a href="./views//product.html">Originals</a>
+            <a href="./views//product.html">Kids</a>
             <a href="">Styles & Stories</a>
             <a href="">Sale</a>
             <a href="">Blog</a>
@@ -226,12 +230,12 @@
                 International Limited.</p>
             <p>C & J Clark America, Inc., 140 Kendrick Street, Needham, MA 02494</p>
 
-            <img src="../images//discover.png" alt="">
-            <img src="../images//paypal.png" alt="">
-            <img src="../images//Klarna.png" alt="">
-            <img src="../images//mastercard.png" alt="">
+            <img src="./images/discover.png" alt="">
+            <img src="./images//paypal.png" alt="">
+            <img src="./images//Klarna.png" alt="">
+            <img src="./images//mastercard.png" alt="">
 
-            <img src="../images/visa.png" alt="">
+            <img src="./images/visa.png" alt="">
 
         </div>
 
@@ -241,6 +245,31 @@
 
 </body>
 <script>
+    let token = JSON.parse(localStorage.getItem("token"))
+    let logInStatus = document.getElementById('logInStatus')
+    if (token) {
+        logInStatus.innerText = "Sign Out"
+
+
+    }
+
+    logInStatus.addEventListener("click", (e) => {
+        if (token) {
+            e.preventDefault()
+            localStorage.removeItem(token)
+            location.reload()
+        }
+
+    })
+
+    document.getElementById('cart').addEventListener("click", () => {
+
+        if (token) {
+            window.location = './views/cart.html'
+        }
+
+    })
+
 </script>
 
 </html>

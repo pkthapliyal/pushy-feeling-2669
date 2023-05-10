@@ -154,12 +154,13 @@
 
         /* display: grid; */
         box-sizing: border-box;
-        width: 100%;
+        width: 95%;
+        margin: auto;
 
     }
 
     #details {
-        width: 100%;
+        /* width: 100%; */
         display: grid;
         margin: auto;
         grid-template-columns: 17% 20% 20% 30% 10%;
@@ -201,7 +202,7 @@
         align-items: center;
         justify-content: center;
         position: relative;
-        min-height: 100vh;
+        /* min-height: 100vh; */
     }
 
     .toast {

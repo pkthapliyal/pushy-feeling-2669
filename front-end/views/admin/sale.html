@@ -18,7 +18,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.0/jspdf.debug.js"></script>
     <link rel="stylesheet" href="./admincss/admin.sales.css">
-    <title>Document</title>
+    <title>shoempire</title>
+    <link rel="icon" type="image/x-icon" href="/front-end//images//Empire.png" sizes="30x35">
     <style>
 
     </style>
@@ -32,7 +33,7 @@
             <i style="font-size:20px; color:#455A64; margin-right: -10px;" id="fa" class="fa">&#xf041;</i>
             <a href="" id="storeLocator">Store Locator</a>
             <i class="fa fa-user" style="font-size:20px; color:#455A64; margin-right: -10px;"></i>
-            <a href="./signin.html" id="logInStatus">Log In / Register</a>
+            <a href="" id="logInStatus">Sign Out</a>
         </div>
 
     </nav>
@@ -208,13 +209,18 @@
 </body>
 
 <script>
-    let url = "http://localhost:8080"
+    let url = 'https://upset-raincoat-newt.cyclic.app/'
 
     let token = JSON.parse(localStorage.getItem("token"))
 
     let logInStatus = document.getElementById('logInStatus')
 
     let user = JSON.parse(localStorage.getItem("username"))
+
+    if (!token) {
+        
+
+    }
 
     if (user == "Admin" || user == "user") {
         storeLocator.innerText = "Hey! " + user
@@ -232,16 +238,18 @@
 
     if (token) {
         logInStatus.innerText = "Sign Out"
-        logInStatus.href = "../index.html"
+        // logInStatus.href = "/front-end/index.html"
         document.getElementById('fa').innerHTML = ""
     }
 
 
     logInStatus.addEventListener("click", (e) => {
+        logInStatus.href = "/front-end/index.html"
         localStorage.removeItem("token")
         localStorage.removeItem("bill");
         localStorage.removeItem("addressData")
         localStorage.removeItem("address");
+        localStorage.removeItem("username")
         return
     })
 

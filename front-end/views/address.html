@@ -35,14 +35,15 @@
 
     <nav class="main">
         <div>
-            <img src="../images//gifmaker_me (1).gif" alt="">
+            <img src="/front-end/images//gifmaker_me (1).gif" alt="">
+            <a href="/front-end//index.html">Hompage</a>
             <a href="./product.html">Woman</a>
             <a href="./product.html">Men</a>
             <a href="./product.html">Kids</a>
             <a href="./product.html">Originals</a>
             <a href="">Accessories</a>
             <a href="">Sale</a>
-            <a href="">Sustainability</a>
+
         </div>
 
         <div class="cart">
@@ -97,10 +98,20 @@
         </div>
 
 
-
-
-
     </div>
+
+
+    <div class="containerTo">
+        <div class="toast" id="toast">
+            <i id="icon" class="fas fa-exclamation-circle"></i>
+            <p class="toast-text" id="message">Oops, Wrong email or password!</p>
+            <p> <a href="" id="linkNext"></a> </p>
+            <i class="fas fa-close" id="close"></i>
+        </div>
+
+        <!-- <button id="open">Open</button> -->
+    </div>
+
 
 
 
@@ -186,12 +197,12 @@
                 International Limited.</p>
             <p>C & J SHOEMPIRE America, Inc., 140 Kendrick Street, Needham, MA 02494</p>
 
-            <img src="../images//discover.png" alt="">
-            <img src="../images//paypal.png" alt="">
-            <img src="../images//Klarna.png" alt="">
-            <img src="../images//mastercard.png" alt="">
+            <img src="/front-end//images/discover.png" alt="">
+            <img src="/front-end//images//paypal.png" alt="">
+            <img src="/front-end//images//Klarna.png" alt="">
+            <img src="/front-end//images//mastercard.png" alt="">
 
-            <img src="../images/visa.png" alt="">
+            <img src="/front-end//images//visa.png" alt="">
 
         </div>
 
@@ -199,21 +210,11 @@
     </footer>
 
 
-    <div class="containerTo">
-        <div class="toast" id="toast">
-            <i id="icon" class="fas fa-exclamation-circle"></i>
-            <p class="toast-text" id="message">Oops, Wrong email or password!</p>
-            <p> <a href="" id="linkNext"></a> </p>
-            <i class="fas fa-close" id="close"></i>
-        </div>
-
-        <button id="open">Open</button>
-    </div>
 
 </body>
 
 <script>
-    let url = "http://localhost:8080"
+    let url = 'https://upset-raincoat-newt.cyclic.app/'
 
     let token = JSON.parse(localStorage.getItem("token"))
 

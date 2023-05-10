@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <title>Document</title>
+    <title>shoempire</title>
+    <link rel="icon" type="image/x-icon" href="/front-end//images//Empire.png" sizes="30x35">
 
     <style>
         * {
@@ -212,7 +213,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            min-height: 100vh;
+            /* min-height: 100vh; */
         }
 
         .toast {
@@ -289,7 +290,7 @@
 
     <nav class="main">
         <div>
-            <img src="../images//gifmaker_me (1).gif" alt="">
+            <img src="/front-end/images//gifmaker_me (1).gif" alt="">
             <a href="./product.html">Woman</a>
             <a href="./product.html">Men</a>
             <a href="./product.html">Kids</a>
@@ -327,6 +328,16 @@
             <button id="submit"> LOG IN</button>
         </form>
         <p>Don't have an account? <a href="./signup.html">CREATE AN ACCOUNT</a></p>
+
+    </div>
+
+    <div class="container">
+        <div class="toast" id="toast">
+            <i id="icon" class="fas fa-exclamation-circle"></i>
+            <p class="toast-text" id="message">Oops, Wrong email or password!</p>
+            <p> <a href="" id="linkNext"></a> </p>
+            <i class="fas fa-close" id="close"></i>
+        </div>
 
     </div>
 
@@ -409,38 +420,25 @@
             <p>© C&J Clark International 2023. Clarks and the Clarks logo are registered trademarks of C&J Clark
                 International Limited.</p>
             <p>C & J Clark America, Inc., 140 Kendrick Street, Needham, MA 02494</p>
+            <img src="/front-end//images/discover.png" alt="">
+            <img src="/front-end//images//paypal.png" alt="">
+            <img src="/front-end//images//Klarna.png" alt="">
+            <img src="/front-end//images//mastercard.png" alt="">
 
-            <img src="../images//discover.png" alt="">
-            <img src="../images//paypal.png" alt="">
-            <img src="../images//Klarna.png" alt="">
-            <img src="../images//mastercard.png" alt="">
+            <img src="/front-end//images//visa.png" alt="">
 
-            <img src="../images/visa.png" alt="">
 
         </div>
 
 
     </footer>
 
-    <div class="container">
-        <div class="toast" id="toast">
-            <i id="icon" class="fas fa-exclamation-circle"></i>
-            <p class="toast-text" id="message">Oops, Wrong email or password!</p>
-            <p> <a href="" id="linkNext"></a> </p>
-            <i class="fas fa-close" id="close"></i>
-        </div>
-
-        <button id="open">Open</button>
-    </div>
-
-
-
 
 
 </body>
 <script>
 
-    let url = "http://localhost:8080"
+    let url = 'https://upset-raincoat-newt.cyclic.app/'
 
     let token;
 
@@ -501,7 +499,7 @@
                     toast.classList.add("active");
                     setTimeout(() => {
                         toast.classList.remove("active");
-                        window.location = "./admin/admin.product.htmll"
+                        window.location = "./admin/admin.product.html"
                     }, 5000)
                     localStorage.setItem("token", JSON.stringify(data.token))
                     localStorage.setItem("username", JSON.stringify(data.user))

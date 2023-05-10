@@ -176,7 +176,7 @@
 
      footer div img {
          width: 80px;
-         height: 50px;
+         height: 70px;
          padding-top: 4%;
          margin-right: 5%;
      }
@@ -465,7 +465,7 @@
          align-items: center;
          justify-content: center;
          position: relative;
-         min-height: 100vh;
+         /* min-height: 100vh; */
      }
 
      .toast {

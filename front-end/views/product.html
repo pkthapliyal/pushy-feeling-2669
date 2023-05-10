@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="./css//product.css">
-    <title>Document</title>
+    <title>shoempire</title>
+    <link rel="icon" type="image/x-icon" href="/front-end//images//Empire.png" sizes="30x35">
 
 </head>
 
@@ -30,21 +31,21 @@
             <i style="font-size:20px; color:#455A64; margin-right: -10px;" id='fa' class="fa">&#xf041;</i>
             <a href="" id="storeLocator">Store Locator</a>
             <i class="fa fa-user" style="font-size:20px; color:#455A64; margin-right: -10px;"></i>
-            <a href="../views/signin.html" id="logInStatus">Log In / Register</a>
+            <a href="./signin.html" id="logInStatus">Log In / Register</a>
         </div>
 
     </nav>
     <p></p>
     <!--  Main navbar -->
-
     <nav class="main">
         <div>
-            <img src="../images//gifmaker_me (1).gif" alt="">
+            <img src="/front-end/images//gifmaker_me (1).gif" alt="">
+            <a href="/front-end//index.html">Hompage</a>
             <a href="">Woman</a>
             <a href="">Men</a>
             <a href="">Kids</a>
             <a href="">Originals</a>
-            <a href="">Accessories</a>
+
             <a href="">Sale</a>
             <a href="./orders.html">Your Orders</a>
         </div>
@@ -187,27 +188,38 @@
 
 
     </div>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">&#x21ee;</button>
 
-
+    <div class="containerTo">
+        <div class="toast" id="toast">
+            <i id="icon" class="fas fa-exclamation-circle"></i>
+            <p class="toast-text" id="message">Oops, Wrong email or password!</p>
+            <p> <a href="" id="linkNext"></a> </p>
+            <i class="fas fa-close" id="close"></i>
+        </div>
 
     </div>
+
+
+    <!-- </div> -->
 
     <!-- footer -->
     <div class="about_section">
         <div>
             <hr>
+
             <h4>DEPARTMENTS</h4>
             <hr>
+            <a href="/front-end//index.html">Hompage</a>
             <a href="">Womens</a>
             <a href="">Mens</a>
             <a href="">Originals</a>
             <a href="">Kids</a>
             <a href="">Styles & Stories</a>
             <a href="">Sale</a>
-            <a href="">Blog</a>
+
 
         </div>
-
 
         <div>
             <hr>
@@ -271,12 +283,12 @@
                 International Limited.</p>
             <p>C & J SHOEMPIRE America, Inc., 140 Kendrick Street, Needham, MA 02494</p>
 
-            <img src="../images//discover.png" alt="">
-            <img src="../images//paypal.png" alt="">
-            <img src="../images//Klarna.png" alt="">
-            <img src="../images//mastercard.png" alt="">
+            <img src="/front-end//images/discover.png" alt="">
+            <img src="/front-end//images//paypal.png" alt="">
+            <img src="/front-end//images//Klarna.png" alt="">
+            <img src="/front-end//images//mastercard.png" alt="">
 
-            <img src="../images/visa.png" alt="">
+            <img src="/front-end//images//visa.png" alt="">
 
         </div>
 
@@ -284,19 +296,6 @@
     </footer>
 
 
-
-    <button onclick="topFunction()" id="myBtn" title="Go to top">&#x21ee;</button>
-
-    <div class="containerTo">
-        <div class="toast" id="toast">
-            <i id="icon" class="fas fa-exclamation-circle"></i>
-            <p class="toast-text" id="message">Oops, Wrong email or password!</p>
-            <p> <a href="" id="linkNext"></a> </p>
-            <i class="fas fa-close" id="close"></i>
-        </div>
-
-        <button id="open">Open</button>
-    </div>
 
 </body>
 
@@ -332,13 +331,13 @@
         document.getElementById('trackOrder').style.fontWeight = "bold"
         document.getElementById('fafa').innerHTML = ""
         logInStatus.innerText = "Sign Out"
-        logInStatus.href = "./index.html"
+        logInStatus.href = "/front-end//index.html"
 
     }
 
     else if (token) {
         logInStatus.innerText = "Sign Out"
-        logInStatus.href = "./index.html"
+        logInStatus.href = "/front-end//index.html"
         storeLocator.innerText = "Hey! " + JSON.parse(localStorage.getItem("username"))
         document.getElementById('fa').innerHTML = ""
     }
@@ -347,7 +346,7 @@
     })
 
 
-    let url = "http://localhost:8080"
+    let url = 'https://upset-raincoat-newt.cyclic.app/'
 
     fetch(`${url}/products`)
         .then((res) => {
