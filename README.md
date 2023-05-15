@@ -48,9 +48,9 @@ An individual project of e commerce-website .
 # Checkout page: 
 - This page has a checkout form for filling the bank details and an invoice which you can download with the help of a download button. This invoice has all the details of products and their prices.
 - Picture 
-- ![image](https://github.com/pkthapliyal/pushy-feeling-2669/assets/121335947/dd4204d4-a151-457a-bd9e-698600d492f8)
+  ![image](https://github.com/pkthapliyal/pushy-feeling-2669/assets/121335947/dd4204d4-a151-457a-bd9e-698600d492f8)
 - Invoice
--![image](https://github.com/pkthapliyal/pushy-feeling-2669/assets/121335947/c129e892-e0aa-4ed7-9282-e5583a64880c)
+ ![image](https://github.com/pkthapliyal/pushy-feeling-2669/assets/121335947/a942dd5b-6194-4e17-abf1-c29cc04489e9)
 
 
 
